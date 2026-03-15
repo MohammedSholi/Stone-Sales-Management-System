@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - SSMS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/base.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=11" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=4" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <script src="/assets/js/theme.js"></script>
+  </head>
+  <body>
+        <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand">
+          <img src="/assets/img/logo.svg" alt="SSMS" class="navbar-logo" />
+          <span>SSMS</span>
+        </a>
+        <div class="navbar-center">
+          <div class="navbar-nav"></div>
+        </div>
+        <div class="navbar-right">
+          <div class="navbar-actions"></div>
+          <div class="theme-toggle">
+            <input type="checkbox" id="darkModeToggle" class="theme-toggle__input" aria-label="Toggle dark mode" />
+            <label for="darkModeToggle" class="theme-toggle__label">
+              <span class="theme-toggle__sky"></span>
+              <span class="theme-toggle__sun"></span>
+              <span class="theme-toggle__moon"></span>
+              <div class="theme-toggle__stars"><span class="theme-toggle__star theme-toggle__star--1"></span><span class="theme-toggle__star theme-toggle__star--2"></span><span class="theme-toggle__star theme-toggle__star--3"></span><span class="theme-toggle__star theme-toggle__star--4"></span><span class="theme-toggle__star theme-toggle__star--5"></span></div>
+              <span class="theme-toggle__cloud theme-toggle__cloud--1"></span>
+              <span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
+              <div class="theme-toggle__hills"><span class="theme-toggle__hill theme-toggle__hill--1"></span><span class="theme-toggle__hill theme-toggle__hill--3"></span><span class="theme-toggle__hill theme-toggle__hill--2"></span><span class="theme-toggle__tree"><div class="theme-toggle__tree-top"></div><div class="theme-toggle__tree-trunk"></div></span></div>
+              <span class="theme-toggle__knob"></span>
+            </label>
+          </div>
+          <button class="navbar-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-nav"></div>
+        <div class="navbar-actions"></div>
+      </div>
+    </nav>
+
+    <div class="container mt-xl mb-4xl">
+      <div class="dashboard-header">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p class="text-muted">System Overview & Management</p>
+        </div>
+      </div>
+
+      <div class="stats-grid mb-2xl">
+        <div class="stat-card">
+          <div class="stat-card-icon primary">📦</div>
+          <div class="stat-card-content">
+            <div class="stat-card-label">Total Orders</div>
+            <div class="stat-card-value" id="totalOrders">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon accent">💎</div>
+          <div class="stat-card-content">
+            <div class="stat-card-label">Stones Listed</div>
+            <div class="stat-card-value" id="totalStones">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon warning">📋</div>
+          <div class="stat-card-content">
+            <div class="stat-card-label">Custom Requests</div>
+            <div class="stat-card-value" id="totalRequests">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon success">💰</div>
+          <div class="stat-card-content">
+            <div class="stat-card-label">Total Revenue</div>
+            <div class="stat-card-value" id="totalRevenue">$0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-lg mb-2xl">
+        <a href="/admin/stones-manage.html" class="card text-center hover-lift">
+          <div class="text-4xl mb-md">💎</div>
+          <h3>Manage Stones</h3>
+          <p class="text-muted">Add, edit, delete products</p>
+        </a>
+        <a href="/admin/orders-manage.html" class="card text-center hover-lift">
+          <div class="text-4xl mb-md">📦</div>
+          <h3>Manage Orders</h3>
+          <p class="text-muted">View and assign orders</p>
+        </a>
+        <a
+          href="/admin/requests-manage.html"
+          class="card text-center hover-lift"
+        >
+          <div class="text-4xl mb-md">📋</div>
+          <h3>Custom Requests</h3>
+          <p class="text-muted">Review and approve</p>
+        </a>
+      </div>
+
+      <div class="dashboard-grid">
+        <div>
+          <h2 class="mb-lg">Recent Orders</h2>
+          <div id="recentOrders"></div>
+        </div>
+
+        <div>
+          <h2 class="mb-lg">Pending Requests</h2>
+          <div id="pendingRequests"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/assets/js/app.js?v=4"></script>
+    <script type="module" src="/assets/js/pages/admin-dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,634 @@
+/*
+ * Scenic Day/Night Toggle + Dark-Mode overrides
+ * ───────────────────────────────────────────────
+ * Pure CSS scenic pill-shaped toggle with embedded SVG scenery.
+ * Add <link rel="stylesheet" href="/assets/css/theme-toggle.css"> to every page.
+ */
+
+/* ── Toggle wrapper (sits in .navbar-container or auth pages) ── */
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Fixed position variant for auth pages (no navbar) */
+.theme-toggle--fixed {
+  position: fixed;
+  top: 1rem;
+  right: 1.25rem;
+  z-index: 1050;
+}
+
+/* Visually hidden checkbox */
+.theme-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Pill track ── */
+.theme-toggle__label {
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 34px;
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.5s ease;
+}
+
+/* ── Scenery layers (absolutely positioned inside the pill) ── */
+
+/* Sky background  */
+.theme-toggle__sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #87ceeb 0%, #b5e3f5 60%, #e0f2e9 100%);
+  transition: background 0.5s ease;
+}
+
+/* Hills  */
+.theme-toggle__hills {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+
+.theme-toggle__hill {
+  position: absolute;
+  border-radius: 50%;
+  transition:
+    background-color 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.theme-toggle__hill--1 {
+  width: 50px;
+  height: 22px;
+  bottom: -8px;
+  left: -4px;
+  background: #5db55d;
+}
+
+.theme-toggle__hill--2 {
+  width: 44px;
+  height: 20px;
+  bottom: -9px;
+  right: -2px;
+  background: #4da34d;
+}
+
+.theme-toggle__hill--3 {
+  width: 34px;
+  height: 16px;
+  bottom: -6px;
+  left: 22px;
+  background: #6ec96e;
+}
+
+/* Tree */
+.theme-toggle__tree {
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
+  transition:
+    filter 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.theme-toggle__tree-trunk {
+  width: 3px;
+  height: 6px;
+  background: #7b5b3a;
+  margin: 0 auto;
+  border-radius: 1px;
+}
+
+.theme-toggle__tree-top {
+  width: 10px;
+  height: 10px;
+  background: #3a8c3a;
+  border-radius: 50% 50% 40% 40%;
+  margin-bottom: -1px;
+  transition: background 0.5s ease;
+}
+
+/* Sun — pinned RIGHT so it's visible when knob is on the LEFT (light mode) */
+.theme-toggle__sun {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  left: auto;
+  width: 14px;
+  height: 14px;
+  background: #ffd230;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(255, 210, 48, 0.45);
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
+}
+
+/* Clouds */
+.theme-toggle__cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 9999px;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.theme-toggle__cloud--1 {
+  width: 14px;
+  height: 5px;
+  top: 7px;
+  left: 32px;
+}
+
+.theme-toggle__cloud--2 {
+  width: 10px;
+  height: 4px;
+  top: 13px;
+  left: 46px;
+}
+
+/* Moon — pinned LEFT so it's visible when knob is on the RIGHT (dark mode) */
+.theme-toggle__moon {
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  right: auto;
+  width: 12px;
+  height: 12px;
+  background: #f0e6b8;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 1px rgba(240, 230, 184, 0.35);
+  opacity: 0;
+  transform: translateX(30px) scale(0.5) rotate(-30deg);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+/* Moon crater (shadow inset) */
+.theme-toggle__moon::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: -3px;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #1a2540;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Stars (hidden in light mode) */
+.theme-toggle__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.theme-toggle__star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.15s;
+}
+
+.theme-toggle__star--1 {
+  top: 6px;
+  left: 18px;
+}
+
+.theme-toggle__star--2 {
+  top: 11px;
+  left: 28px;
+}
+
+.theme-toggle__star--3 {
+  top: 4px;
+  left: 37px;
+}
+
+.theme-toggle__star--4 {
+  top: 14px;
+  left: 42px;
+}
+
+.theme-toggle__star--5 {
+  top: 8px;
+  left: 52px;
+  width: 1.5px;
+  height: 1.5px;
+}
+
+/* ── Sliding knob ── */
+.theme-toggle__knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ===========================
+   DARK / NIGHT STATE
+   (when checkbox is checked)
+   =========================== */
+
+/* Move knob to the right */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__knob {
+  transform: translateX(38px);
+}
+
+/* Night sky */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__sky {
+  background: linear-gradient(180deg, #0f1b33 0%, #1a2540 50%, #263352 100%);
+}
+
+/* Dark hills */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__hill--1 {
+  background: #1e3a1e;
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__hill--2 {
+  background: #1b331b;
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__hill--3 {
+  background: #234623;
+}
+
+/* Tree becomes darker */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__tree-top {
+  background: #1b4a1b;
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__tree {
+  filter: brightness(0.6);
+}
+
+/* Sun hides — slides left 30px as it fades out */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__sun {
+  opacity: 0;
+  transform: translateX(-30px) scale(0.5);
+}
+
+/* Clouds hide */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__cloud {
+  opacity: 0;
+  transform: translateX(-6px);
+}
+
+/* Moon appears — slides in from the right to its pinned-left position */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__moon {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(0deg);
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__moon::after {
+  opacity: 1;
+}
+
+/* Stars appear */
+.theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__star {
+  opacity: 1;
+}
+
+/* ── Focus ring for accessibility ── */
+.theme-toggle__input:focus-visible ~ .theme-toggle__label {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ================================================
+   DARK MODE — Global colour overrides on <body>
+   ================================================ */
+body.dark-mode,
+html.dark-mode body {
+  --color-primary: #e8e0d6;
+  --color-background: #121417;
+  --color-surface: #1c1f24;
+  --color-text-main: #d9d5d0;
+  --color-text-muted: #8d8a86;
+  --color-border: #2e3138;
+  --color-hover: #23262c;
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --color-secondary: #4a3f30;
+  --color-accent: #c99a56;
+  --color-accent-contrast: #1a1200;
+  --navbar-bg: rgba(28, 31, 36, 0.88);
+  --navbar-border: rgba(255, 255, 255, 0.06);
+}
+
+/* Prevent flash of light theme — applied to <html> before body exists */
+html.dark-mode {
+  background-color: #121417;
+}
+
+/* Navbar glassmorphism in dark mode */
+body.dark-mode .navbar {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .navbar-brand {
+  color: var(--color-text-main);
+}
+
+body.dark-mode .navbar-toggle {
+  border-color: var(--color-border);
+}
+
+body.dark-mode .navbar-toggle span {
+  background-color: var(--color-text-main);
+}
+
+body.dark-mode .navbar-actions .btn-ghost {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .navbar-actions .btn-ghost:hover {
+  color: var(--color-text-main);
+  background-color: var(--color-hover);
+}
+
+body.dark-mode .navbar-actions .btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+body.dark-mode .navbar-actions .btn-accent:hover {
+  background-color: #d4a862;
+}
+
+body.dark-mode .navbar-icon-btn,
+body.dark-mode .navbar-language-toggle,
+body.dark-mode .navbar-avatar-btn,
+body.dark-mode .navbar-mobile-menu .navbar-login-link,
+body.dark-mode .navbar-mobile-menu .navbar-dropdown-item {
+  background-color: #171b20;
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+body.dark-mode .navbar-icon-btn:hover,
+body.dark-mode .navbar-language-toggle:hover,
+body.dark-mode .navbar-avatar-btn:hover {
+  background-color: var(--color-hover);
+}
+
+body.dark-mode .navbar-dropdown {
+  background: #171b20;
+  border-color: var(--color-border);
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .navbar-dropdown-item.is-danger {
+  color: #ff8d86;
+  background-color: rgba(255, 93, 85, 0.12);
+}
+
+body.dark-mode .navbar-dropdown-item.is-danger:hover {
+  background-color: rgba(255, 93, 85, 0.2);
+}
+
+body.dark-mode .navbar-nav {
+  border-color: var(--color-border);
+}
+
+body.dark-mode .card,
+body.dark-mode .request-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .form-input,
+body.dark-mode .form-textarea {
+  background-color: #181b20;
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode .form-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(201, 154, 86, 0.15);
+}
+
+body.dark-mode select.form-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238d8a86' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+body.dark-mode .btn-outline {
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+body.dark-mode .btn-outline:hover {
+  background: var(--color-hover);
+}
+
+/* Primary button: light beige bg in dark mode needs dark text */
+body.dark-mode .btn-primary {
+  background-color: var(--color-primary);
+  color: #1a1a2e;
+  border-color: var(--color-primary);
+}
+
+body.dark-mode .btn-primary:hover:not(:disabled) {
+  background-color: #d4ccc2;
+  color: #1a1a2e;
+}
+
+/* Accent button: gold bg needs dark text in dark mode */
+body.dark-mode .btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: var(--color-accent);
+}
+
+body.dark-mode .btn-accent:hover:not(:disabled) {
+  background-color: #d4a862;
+  color: var(--color-accent-contrast);
+}
+
+/* Outline hover: filled bg needs readable text */
+body.dark-mode .btn-outline:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: #1a1a2e;
+}
+
+body.dark-mode img {
+  opacity: 0.92;
+}
+
+body.dark-mode .file-upload-zone {
+  background: #181b20;
+  border-color: var(--color-border);
+}
+
+body.dark-mode .file-upload-zone:hover,
+body.dark-mode .file-upload-zone.dragover {
+  border-color: var(--color-accent);
+  background: rgba(201, 154, 86, 0.06);
+}
+
+body.dark-mode .request-tip {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 63, 48, 0.2) 0%,
+    rgba(201, 154, 86, 0.06) 100%
+  );
+}
+
+/* Hero section darken */
+body.dark-mode .hero {
+  background-color: #0f1214;
+}
+
+/* Footer already dark — keep it but lighten slightly for contrast */
+body.dark-mode .footer {
+  background-color: #0a0c0e;
+}
+
+/* Table rows */
+body.dark-mode tr:nth-child(even) {
+  background: var(--color-hover);
+}
+
+body.dark-mode th {
+  background: #1a1d22;
+}
+
+/* Auth pages */
+body.dark-mode .auth-container {
+  background: var(--color-background);
+}
+
+body.dark-mode .auth-box {
+  background: var(--color-surface);
+}
+
+body.dark-mode .auth-side {
+  background: linear-gradient(135deg, #1a1510 0%, #2a2015 100%);
+}
+
+/* Dashboard stat cards */
+body.dark-mode .stat-card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+body.dark-mode .stat-icon {
+  opacity: 0.85;
+}
+
+/* Scrollbar (WebKit) */
+body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #3a3f47;
+  border-radius: 4px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #4a4f57;
+}
+
+/* ── Responsive: smaller toggle on mobile ── */
+@media (max-width: 768px) {
+  .theme-toggle__label {
+    width: 60px;
+    height: 28px;
+  }
+
+  .theme-toggle__knob {
+    width: 22px;
+    height: 22px;
+  }
+
+  .theme-toggle__input:checked ~ .theme-toggle__label .theme-toggle__knob {
+    transform: translateX(32px);
+  }
+
+  .theme-toggle__sun {
+    width: 11px;
+    height: 11px;
+    top: 4px;
+    right: 10px;
+    left: auto;
+  }
+
+  .theme-toggle__moon {
+    width: 10px;
+    height: 10px;
+    top: 5px;
+    left: 10px;
+    right: auto;
+  }
+
+  .theme-toggle__cloud--1 {
+    width: 11px;
+    height: 4px;
+    top: 5px;
+    left: 26px;
+  }
+
+  .theme-toggle__cloud--2 {
+    width: 8px;
+    height: 3px;
+    top: 11px;
+    left: 38px;
+  }
+
+  .theme-toggle__tree {
+    right: 8px;
+    bottom: 3px;
+  }
+
+  .theme-toggle__tree-top {
+    width: 8px;
+    height: 8px;
+  }
+
+  .theme-toggle__tree-trunk {
+    width: 2px;
+    height: 5px;
+  }
+}

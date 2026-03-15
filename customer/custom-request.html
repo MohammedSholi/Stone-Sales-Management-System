@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Request - SSMS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/base.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=11" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/pages/custom-request.css" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=4" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <script src="/assets/js/theme.js"></script>
+  </head>
+  <body>
+        <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand">
+          <img src="/assets/img/logo.svg" alt="SSMS" class="navbar-logo" />
+          <span>SSMS</span>
+        </a>
+        <div class="navbar-center">
+          <div class="navbar-nav"></div>
+        </div>
+        <div class="navbar-right">
+          <div class="navbar-actions"></div>
+          <div class="theme-toggle">
+            <input type="checkbox" id="darkModeToggle" class="theme-toggle__input" aria-label="Toggle dark mode" />
+            <label for="darkModeToggle" class="theme-toggle__label">
+              <span class="theme-toggle__sky"></span>
+              <span class="theme-toggle__sun"></span>
+              <span class="theme-toggle__moon"></span>
+              <div class="theme-toggle__stars"><span class="theme-toggle__star theme-toggle__star--1"></span><span class="theme-toggle__star theme-toggle__star--2"></span><span class="theme-toggle__star theme-toggle__star--3"></span><span class="theme-toggle__star theme-toggle__star--4"></span><span class="theme-toggle__star theme-toggle__star--5"></span></div>
+              <span class="theme-toggle__cloud theme-toggle__cloud--1"></span>
+              <span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
+              <div class="theme-toggle__hills"><span class="theme-toggle__hill theme-toggle__hill--1"></span><span class="theme-toggle__hill theme-toggle__hill--3"></span><span class="theme-toggle__hill theme-toggle__hill--2"></span><span class="theme-toggle__tree"><div class="theme-toggle__tree-top"></div><div class="theme-toggle__tree-trunk"></div></span></div>
+              <span class="theme-toggle__knob"></span>
+            </label>
+          </div>
+          <button class="navbar-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-nav"></div>
+        <div class="navbar-actions"></div>
+      </div>
+    </nav>
+
+    <div class="container mt-xl mb-4xl">
+      <div class="breadcrumb mb-lg">
+        <a href="/customer/dashboard.html">Dashboard</a>
+        <span class="breadcrumb-divider">/</span>
+        <span>Custom Request</span>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <!-- Hero Header -->
+        <div class="request-hero">
+          <div class="request-hero-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              <polyline points="2 17 12 22 22 17" />
+              <polyline points="2 12 12 17 22 12" />
+            </svg>
+          </div>
+          <h1>Custom Stone Request</h1>
+          <p>
+            Describe your ideal stone and our craftsmen will provide a tailored
+            quote within 24 hours.
+          </p>
+        </div>
+
+        <!-- Tip Box -->
+        <div class="request-tip">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+          <span
+            >The more detail you provide — dimensions, finish, colour preference
+            — the faster and more accurate your quote will be.</span
+          >
+        </div>
+
+        <!-- Main Form Card -->
+        <form id="customRequestForm" class="request-card">
+          <!-- Section: Stone Details -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+              </svg>
+              Stone Details
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="stoneType" class="form-label required"
+                  >Stone Type</label
+                >
+                <select id="stoneType" class="form-input" required>
+                  <option value="">Select stone type</option>
+                  <option value="Marble">Marble</option>
+                  <option value="Granite">Granite</option>
+                  <option value="Limestone">Limestone</option>
+                  <option value="Slate">Slate</option>
+                  <option value="Sandstone">Sandstone</option>
+                  <option value="Travertine">Travertine</option>
+                  <option value="Other">Other (specify below)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="quantity" class="form-label required"
+                  >Quantity (sq ft)</label
+                >
+                <input
+                  type="number"
+                  id="quantity"
+                  class="form-input"
+                  min="1"
+                  placeholder="e.g. 250"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="budget" class="form-label">Budget (SAR)</label>
+                <input
+                  type="number"
+                  id="budget"
+                  class="form-input"
+                  min="0"
+                  placeholder="Optional"
+                />
+              </div>
+              <div class="form-group">
+                <label for="deadline" class="form-label"
+                  >Preferred Delivery</label
+                >
+                <input type="date" id="deadline" class="form-input" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Requirements -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+              Requirements &amp; Notes
+            </div>
+
+            <div class="form-group">
+              <label for="description" class="form-label required"
+                >Description</label
+              >
+              <textarea
+                id="description"
+                class="form-textarea"
+                rows="5"
+                required
+                placeholder="Dimensions, finish, colour preferences, intended use…"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Section: Attachments -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"
+                />
+              </svg>
+              Attachments
+            </div>
+
+            <div class="file-upload-zone" id="fileUploadZone">
+              <input
+                type="file"
+                id="attachments"
+                multiple
+                accept="image/*,.pdf"
+              />
+              <div class="file-upload-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="16 16 12 12 8 16" />
+                  <line x1="12" y1="12" x2="12" y2="21" />
+                  <path
+                    d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"
+                  />
+                </svg>
+              </div>
+              <p class="file-upload-text">
+                Drag files here or <span>browse</span>
+              </p>
+              <p class="file-upload-hint">
+                Images or PDFs — up to 5 files, 10 MB each
+              </p>
+              <div class="file-list" id="fileList"></div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="request-submit">
+            <button type="submit" class="btn btn-accent btn-lg w-full">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Submit Request
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/assets/js/app.js?v=4"></script>
+    <script type="module" src="/assets/js/pages/custom-request.js"></script>
+
+    <!-- File upload zone interactivity -->
+    <script>
+      (function () {
+        const zone = document.getElementById("fileUploadZone");
+        const input = document.getElementById("attachments");
+        const list = document.getElementById("fileList");
+        if (!zone || !input) return;
+
+        // Drag-and-drop visual feedback
+        ["dragenter", "dragover"].forEach((evt) =>
+          zone.addEventListener(evt, (e) => {
+            e.preventDefault();
+            zone.classList.add("dragover");
+          }),
+        );
+        ["dragleave", "drop"].forEach((evt) =>
+          zone.addEventListener(evt, (e) => {
+            e.preventDefault();
+            zone.classList.remove("dragover");
+          }),
+        );
+
+        // Render selected file names
+        function renderFiles() {
+          if (!list) return;
+          list.innerHTML = "";
+          Array.from(input.files).forEach((f, i) => {
+            const tag = document.createElement("span");
+            tag.className = "file-list-item";
+            tag.innerHTML =
+              f.name +
+              ' <button type="button" class="remove-file" data-idx="' +
+              i +
+              '" title="Remove">&times;</button>';
+            list.appendChild(tag);
+          });
+        }
+        input.addEventListener("change", renderFiles);
+      })();
+    </script>
+  </body>
+</html>

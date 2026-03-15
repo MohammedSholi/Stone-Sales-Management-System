@@ -1,0 +1,67 @@
+[
+  {
+    "id": "EMP001",
+    "name": "Mike Johnson",
+    "email": "mike.johnson@ssms.com",
+    "phone": "+1 (555) 111-2222",
+    "role": "Senior Order Manager",
+    "department": "Operations",
+    "assignedOrders": 12,
+    "completedOrders": 156,
+    "active": true,
+    "joinedDate": "2023-03-15",
+    "avatar": "https://i.pravatar.cc/150?img=12"
+  },
+  {
+    "id": "EMP002",
+    "name": "Emma Davis",
+    "email": "emma.davis@ssms.com",
+    "phone": "+1 (555) 222-3333",
+    "role": "Order Coordinator",
+    "department": "Operations",
+    "assignedOrders": 8,
+    "completedOrders": 98,
+    "active": true,
+    "joinedDate": "2024-01-20",
+    "avatar": "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    "id": "EMP003",
+    "name": "Alex Brown",
+    "email": "alex.brown@ssms.com",
+    "phone": "+1 (555) 333-4444",
+    "role": "Logistics Manager",
+    "department": "Logistics",
+    "assignedOrders": 15,
+    "completedOrders": 203,
+    "active": true,
+    "joinedDate": "2022-11-10",
+    "avatar": "https://i.pravatar.cc/150?img=8"
+  },
+  {
+    "id": "EMP004",
+    "name": "Sarah Miller",
+    "email": "sarah.miller@ssms.com",
+    "phone": "+1 (555) 444-5555",
+    "role": "Quality Inspector",
+    "department": "Quality Control",
+    "assignedOrders": 0,
+    "completedOrders": 287,
+    "active": true,
+    "joinedDate": "2023-06-01",
+    "avatar": "https://i.pravatar.cc/150?img=9"
+  },
+  {
+    "id": "EMP005",
+    "name": "David Wilson",
+    "email": "david.wilson@ssms.com",
+    "phone": "+1 (555) 555-6666",
+    "role": "Order Processor",
+    "department": "Operations",
+    "assignedOrders": 6,
+    "completedOrders": 145,
+    "active": true,
+    "joinedDate": "2024-02-15",
+    "avatar": "https://i.pravatar.cc/150?img=13"
+  }
+]

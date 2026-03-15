@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Debug Test</title>
+    <style>
+      body {
+        font-family: monospace;
+        padding: 20px;
+        background: #111;
+        color: #0f0;
+      }
+      #log {
+        white-space: pre-wrap;
+        margin-top: 20px;
+      }
+      .err {
+        color: #f44;
+      }
+      .ok {
+        color: #0f0;
+      }
+      .warn {
+        color: #ff0;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>SSMS Login Debug Page</h2>
+    <p>
+      Open your browser's Developer Console (F12) then click the buttons below:
+    </p>
+    <button onclick="testLogin()">1. Test Login API</button>
+    <button onclick="testLocalStorage()">2. Check localStorage</button>
+    <button onclick="testRedirect()">3. Test Redirect</button>
+    <button onclick="testFullFlow()">4. Full Login + Redirect</button>
+    <button onclick="clearAll()">5. Clear localStorage</button>
+    <div id="log"></div>
+
+    <script>
+      const API = "http://localhost/ssms-backend/public/api";
+      const logEl = document.getElementById("log");
+
+      function log(msg, cls = "ok") {
+        const line = document.createElement("div");
+        line.className = cls;
+        line.textContent = "[" + new Date().toLocaleTimeString() + "] " + msg;
+        logEl.appendChild(line);
+        logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      async function testLogin() {
+        log("--- Testing Login API ---");
+        try {
+          const resp = await fetch(API + "/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({ username: "admin", password: "Admin@123" }),
+          });
+          log("HTTP status: " + resp.status);
+          const data = await resp.json();
+          log("success: " + data.success);
+          log("role: " + (data.data ? data.data.role : "N/A"));
+          log("Full response: " + JSON.stringify(data.data));
+
+          if (data.success) {
+            // Save to localStorage exactly like auth.js does
+            localStorage.setItem("ssms_user", JSON.stringify(data.data));
+            localStorage.setItem("ssms_role", data.data.role);
+            log("Saved to localStorage: ssms_role = " + data.data.role);
+          }
+        } catch (e) {
+          log("FETCH ERROR: " + e.message, "err");
+        }
+      }
+
+      function testLocalStorage() {
+        log("--- Checking localStorage ---");
+        const user = localStorage.getItem("ssms_user");
+        const role = localStorage.getItem("ssms_role");
+        log(
+          "ssms_user: " +
+            (user ? "SET (" + user.substring(0, 80) + "...)" : "NOT SET"),
+          user ? "ok" : "err",
+        );
+        log("ssms_role: " + (role || "NOT SET"), role ? "ok" : "err");
+        if (role) {
+          log(
+            'role === "Admin"? ' + (role === "Admin"),
+            role === "Admin" ? "ok" : "err",
+          );
+          log('role === "admin"? ' + (role === "admin"), "warn");
+        }
+      }
+
+      function testRedirect() {
+        log("--- Testing redirect to /admin/dashboard.html in 2 seconds ---");
+        log(
+          "If you end up back here, the admin dashboard is bouncing you back.",
+        );
+        setTimeout(() => {
+          window.location.href = "/admin/dashboard.html";
+        }, 2000);
+      }
+
+      async function testFullFlow() {
+        log("--- Full Flow: Login then Redirect ---");
+        await testLogin();
+        testLocalStorage();
+        log("Redirecting to /admin/dashboard.html in 3 seconds...", "warn");
+        setTimeout(() => {
+          window.location.href = "/admin/dashboard.html";
+        }, 3000);
+      }
+
+      function clearAll() {
+        localStorage.removeItem("ssms_user");
+        localStorage.removeItem("ssms_role");
+        log("localStorage cleared.");
+      }
+
+      log("Page loaded. Click a button to start testing.", "warn");
+    </script>
+  </body>
+</html>

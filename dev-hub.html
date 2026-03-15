@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSMS - Developer Hub</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 2rem;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        color: #1a202c;
+        margin-bottom: 0.5rem;
+        font-size: 2.5rem;
+      }
+      .subtitle {
+        color: #718096;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .card {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        background: #f7fafc;
+      }
+      .card h2 {
+        color: #2d3748;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .card-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .btn {
+        display: block;
+        padding: 0.75rem 1rem;
+        background: white;
+        border: 1px solid #cbd5e0;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #2d3748;
+        transition: all 0.2s;
+        font-size: 0.95rem;
+      }
+      .btn:hover {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      }
+      .btn-primary {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+      }
+      .btn-primary:hover {
+        background: #5568d3;
+      }
+      .tools {
+        background: #edf2f7;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+      .tools h3 {
+        color: #2d3748;
+        margin-bottom: 1rem;
+      }
+      .code {
+        background: #2d3748;
+        color: #48bb78;
+        padding: 1rem;
+        border-radius: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        overflow-x: auto;
+      }
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #48bb78;
+        color: white;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+      .emoji {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🏗️ SSMS Developer Hub</h1>
+      <p class="subtitle">
+        Stone Sales Management System - Quick Access to All Pages
+      </p>
+
+      <div class="grid">
+        <!-- Public Pages -->
+        <div class="card">
+          <h2><span class="emoji">🌐</span> Public Pages</h2>
+          <div class="card-links">
+            <a href="/index.php" class="btn btn-primary">🏠 Landing Page</a>
+            <a href="/catalog/stones.html" class="btn"
+              >💎 Catalog (Browse Stones)</a
+            >
+            <a href="/catalog/stone-details.html?id=stone-1" class="btn"
+              >📄 Stone Details</a
+            >
+            <a href="/cart/cart.html" class="btn">🛒 Shopping Cart</a>
+            <a href="/auth/login.html" class="btn">🔐 Login</a>
+            <a href="/auth/register.html" class="btn">📝 Register</a>
+            <a href="/shared/404.html" class="btn">❌ 404 Page</a>
+          </div>
+        </div>
+
+        <!-- Customer Pages -->
+        <div class="card">
+          <h2>
+            <span class="emoji">👤</span> Customer
+            <span class="badge">ROLE</span>
+          </h2>
+          <div class="card-links">
+            <a href="/customer/dashboard.html" class="btn btn-primary"
+              >📊 Dashboard</a
+            >
+            <a href="/customer/my-orders.html" class="btn">📦 My Orders</a>
+            <a href="/customer/order-details.html?id=ORD-001" class="btn"
+              >🔍 Order Details</a
+            >
+            <a href="/customer/custom-request.html" class="btn"
+              >📋 Custom Request</a
+            >
+            <a href="/checkout/checkout.html" class="btn">💳 Checkout</a>
+          </div>
+        </div>
+
+        <!-- Employee Pages -->
+        <div class="card">
+          <h2>
+            <span class="emoji">👷</span> Employee
+            <span class="badge">ROLE</span>
+          </h2>
+          <div class="card-links">
+            <a href="/employee/dashboard.html" class="btn btn-primary"
+              >📊 Dashboard</a
+            >
+            <a href="/employee/order-manage.html" class="btn"
+              >⚙️ Manage Orders</a
+            >
+            <a href="/employee/order-manage.html?id=ORD-001" class="btn"
+              >📝 Order Details</a
+            >
+          </div>
+        </div>
+
+        <!-- Admin Pages -->
+        <div class="card">
+          <h2>
+            <span class="emoji">⚡</span> Admin <span class="badge">ROLE</span>
+          </h2>
+          <div class="card-links">
+            <a href="/admin/dashboard.html" class="btn btn-primary"
+              >📊 Dashboard</a
+            >
+            <a href="/admin/stones-manage.html" class="btn">💎 Manage Stones</a>
+            <a href="/admin/orders-manage.html" class="btn">📦 Manage Orders</a>
+            <a href="/admin/requests-manage.html" class="btn"
+              >📋 Manage Requests</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer Tools -->
+      <div class="tools">
+        <h3>🛠️ Quick Console Commands</h3>
+        <p style="color: #4a5568; margin-bottom: 1rem">
+          Copy and paste these in browser console (F12):
+        </p>
+
+        <div class="code">
+          // Switch to Customer role<br />SSMS.setUserSession({ id: 'user-1',
+          name: 'John Doe', email: 'john@example.com' }, 'customer');<br />location.reload();
+        </div>
+
+        <div class="code">
+          // Switch to Employee role<br />SSMS.setUserSession({ id: 'emp-1',
+          name: 'Jane Smith', email: 'jane@example.com' }, 'employee');<br />location.reload();
+        </div>
+
+        <div class="code">
+          // Switch to Admin role<br />SSMS.setUserSession({ id: 'admin-1',
+          name: 'Admin User', email: 'admin@example.com' }, 'admin');<br />location.reload();
+        </div>
+
+        <div class="code">
+          // Add test item to cart<br />CartStorage.addToCart({ id: 'stone-1',
+          name: 'Carrara Marble', price: 45, image: '', type: 'Marble',
+          quantity: 2 });<br />location.reload();
+        </div>
+
+        <div class="code">
+          // Clear all data (reset)<br />localStorage.clear();<br />location.reload();
+        </div>
+
+        <div class="code">
+          // View current cart<br />console.table(CartStorage.getCart());
+        </div>
+
+        <div class="code">
+          // View all orders<br />console.table(OrderStorage.getOrders());
+        </div>
+      </div>
+
+      <div
+        style="
+          margin-top: 2rem;
+          padding: 1rem;
+          background: #fff5f5;
+          border-left: 4px solid #f56565;
+          border-radius: 8px;
+        "
+      >
+        <strong style="color: #c53030">⚠️ Important:</strong>
+        <p style="color: #742a2a; margin-top: 0.5rem">
+          This is a development page. Make sure you're running a local server
+          (Live Server, Python http.server, etc.) for proper functionality.
+          Direct file:// access may cause CORS issues.
+        </p>
+      </div>
+
+      <div
+        style="
+          margin-top: 1.5rem;
+          text-align: center;
+          color: #718096;
+          font-size: 0.9rem;
+        "
+      >
+        <p>
+          📚 See <strong>README.md</strong> and
+          <strong>QUICK_START.md</strong> for detailed documentation
+        </p>
+        <p style="margin-top: 0.5rem">Built with ❤️ using Vanilla JavaScript</p>
+      </div>
+    </div>
+
+    <script type="module" src="/assets/js/app.js?v=4"></script>
+  </body>
+</html>

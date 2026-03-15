@@ -1,0 +1,329 @@
+/*
+ * Custom Stone Request — Premium Form Styles
+ * ─────────────────────────────────────────────
+ * Earthy, elegant design for the SSMS stone request page.
+ * Uses CSS variables from base.css. Fully responsive.
+ */
+
+/* ── Page hero header ── */
+.request-hero {
+  text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-xl) var(--spacing-2xl);
+  position: relative;
+}
+
+.request-hero::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-secondary)
+  );
+  border-radius: var(--radius-full);
+  margin: var(--spacing-lg) auto 0;
+}
+
+.request-hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #e8ddd0 100%);
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 4px 16px rgba(176, 122, 62, 0.15);
+}
+
+.request-hero h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.request-hero p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── Form card wrapper ── */
+.request-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2xl);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--transition-base);
+}
+
+.request-card:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+/* ── Section dividers inside the form ── */
+.form-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-section-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.form-section-title svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+/* ── 2-column form grid ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* ── Enhanced form inputs on this page ── */
+.request-card .form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.request-card .form-label {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+}
+
+.request-card .form-input,
+.request-card .form-textarea {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.9rem;
+  font-size: var(--font-size-base);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  background-color: #fafaf8;
+}
+
+.request-card .form-input:hover,
+.request-card .form-textarea:hover {
+  border-color: var(--color-secondary);
+}
+
+.request-card .form-input:focus,
+.request-card .form-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(176, 122, 62, 0.12);
+  background-color: var(--color-surface);
+  outline: none;
+}
+
+.request-card select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+}
+
+.request-card .form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── File upload drop zone ── */
+.file-upload-zone {
+  position: relative;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+  background: #fcfbf9;
+}
+
+.file-upload-zone:hover,
+.file-upload-zone.dragover {
+  border-color: var(--color-accent);
+  background: rgba(176, 122, 62, 0.04);
+}
+
+.file-upload-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #e8ddd0 100%);
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-sm);
+}
+
+.file-upload-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.file-upload-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0.2rem;
+}
+
+.file-upload-text span {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.file-upload-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* File list preview */
+.file-list {
+  margin-top: var(--spacing-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.file-list-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--color-hover);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-main);
+}
+
+.file-list-item .remove-file {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  padding: 0;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.file-list-item .remove-file:hover {
+  color: var(--color-danger);
+}
+
+/* ── Submit button area ── */
+.request-submit {
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--spacing-sm);
+}
+
+.request-submit .btn {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.request-submit .btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Info tip box ── */
+.request-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(216, 195, 165, 0.15) 0%,
+    rgba(176, 122, 62, 0.06) 100%
+  );
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.request-tip svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .request-card {
+    padding: var(--spacing-lg);
+  }
+
+  .request-hero {
+    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
+  }
+
+  .request-hero h1 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .request-card {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+  }
+}

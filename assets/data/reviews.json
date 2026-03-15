@@ -1,0 +1,122 @@
+[
+  {
+    "id": "REV001",
+    "stoneId": "STN001",
+    "customerId": "CUST011",
+    "customerName": "Anna Williams",
+    "rating": 5,
+    "title": "Absolutely stunning marble!",
+    "comment": "Used this Carrara marble for our kitchen countertops and backsplash. The quality is exceptional and the veining is beautiful. Installation went smoothly and it looks even better in person than in photos.",
+    "verified": true,
+    "helpful": 23,
+    "createdAt": "2026-01-28T10:15:00Z"
+  },
+  {
+    "id": "REV002",
+    "stoneId": "STN001",
+    "customerId": "CUST012",
+    "customerName": "Tom Harrison",
+    "rating": 4,
+    "title": "Great quality, slight color variation",
+    "comment": "Overall very happy with the marble. There was slight color variation between batches, but it actually adds character. Make sure to seal it properly for kitchen use.",
+    "verified": true,
+    "helpful": 15,
+    "createdAt": "2026-02-05T14:30:00Z"
+  },
+  {
+    "id": "REV003",
+    "stoneId": "STN002",
+    "customerId": "CUST013",
+    "customerName": "Rachel Cohen",
+    "rating": 5,
+    "title": "Perfect for our Jerusalem project",
+    "comment": "We needed authentic Jerusalem stone for a heritage building project. This limestone exceeded our expectations. The warm golden tones are exactly what we were looking for.",
+    "verified": true,
+    "helpful": 18,
+    "createdAt": "2026-02-01T09:00:00Z"
+  },
+  {
+    "id": "REV004",
+    "stoneId": "STN003",
+    "customerId": "CUST014",
+    "customerName": "Daniel Kim",
+    "rating": 5,
+    "title": "Premium quality Jerusalem ivory",
+    "comment": "Used for exterior facade. The chiseled finish gives it an elegant, timeless look. Weather resistant and maintains its beauty. Highly recommend!",
+    "verified": true,
+    "helpful": 21,
+    "createdAt": "2026-01-25T11:45:00Z"
+  },
+  {
+    "id": "REV005",
+    "stoneId": "STN004",
+    "customerId": "CUST015",
+    "customerName": "Victoria Santos",
+    "rating": 5,
+    "title": "Luxurious dark marble",
+    "comment": "This Emperador marble transformed our master bathroom. The rich dark tones with white veining create such a dramatic, spa-like atmosphere. Worth every penny!",
+    "verified": true,
+    "helpful": 19,
+    "createdAt": "2026-02-10T16:20:00Z"
+  },
+  {
+    "id": "REV006",
+    "stoneId": "STN005",
+    "customerId": "CUST016",
+    "customerName": "Mark Johnson",
+    "rating": 4,
+    "title": "Good value travertine",
+    "comment": "Solid choice for the price. Used it for our patio and it looks great. The tumbled finish provides good traction. Just be aware that travertine needs regular sealing.",
+    "verified": true,
+    "helpful": 12,
+    "createdAt": "2026-02-08T13:10:00Z"
+  },
+  {
+    "id": "REV007",
+    "stoneId": "STN007",
+    "customerId": "CUST017",
+    "customerName": "Linda Peterson",
+    "rating": 5,
+    "title": "Beautiful pearl stone",
+    "comment": "The Jerusalem Pearl stone is gorgeous! Perfect for our entryway. The light color brightens the space and the quality is outstanding. Excellent customer service too.",
+    "verified": true,
+    "helpful": 16,
+    "createdAt": "2026-02-15T08:45:00Z"
+  },
+  {
+    "id": "REV008",
+    "stoneId": "STN008",
+    "customerId": "CUST018",
+    "customerName": "Christopher Lee",
+    "rating": 5,
+    "title": "Worth the premium price",
+    "comment": "Calacatta Gold is expensive but completely worth it. The bold veining makes every piece unique. Used for fireplace surround and it's the focal point of our living room.",
+    "verified": true,
+    "helpful": 25,
+    "createdAt": "2026-01-30T12:00:00Z"
+  },
+  {
+    "id": "REV009",
+    "stoneId": "STN003",
+    "customerId": "CUST019",
+    "customerName": "Rebecca Gold",
+    "rating": 4,
+    "title": "Classic and elegant",
+    "comment": "Jerusalem Ivory stone never goes out of style. Using it for a renovation of a historic building. The antiqued finish gives it authentic character.",
+    "verified": true,
+    "helpful": 14,
+    "createdAt": "2026-02-12T15:30:00Z"
+  },
+  {
+    "id": "REV010",
+    "stoneId": "STN001",
+    "customerId": "CUST020",
+    "customerName": "Steven White",
+    "rating": 5,
+    "title": "Best marble for the money",
+    "comment": "Compared prices at multiple suppliers. SSMS offered the best quality Carrara marble at a competitive price. Fast delivery and well-packaged. Will definitely order again!",
+    "verified": true,
+    "helpful": 20,
+    "createdAt": "2026-02-18T10:00:00Z"
+  }
+]

@@ -1,0 +1,423 @@
+[2026-02-23 17:08:56] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":168,"parsed_body":{"username":"vlsi","password":"***REDACTED***","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"1111111115","address":"nablus"},"session_user_id":null}
+[2026-02-23 17:08:56] ERROR: API Error: NOT_FOUND - Invalid API endpoint {"status_code":404}
+[2026-02-23 17:14:07] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":167,"parsed_body":{"username":"vlsi","password":"***REDACTED***","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"1111111115","address":"nablus"},"session_user_id":null}
+[2026-02-23 17:14:07] ERROR: API Error: NOT_FOUND - Invalid API endpoint {"status_code":404}
+[2026-02-23 17:23:12] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/debug\/ping","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 17:23:13] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/debug\/ping","base_path":"\/ssms-backend\/public","clean_uri":"api\/debug\/ping","segments":["api","debug","ping"]}
+[2026-02-23 17:23:33] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/debug\/ping","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 17:23:33] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/debug\/ping","base_path":"\/ssms-backend\/public","clean_uri":"api\/debug\/ping","segments":["api","debug","ping"]}
+[2026-02-23 17:23:48] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":2,"parsed_body":null,"session_user_id":null}
+[2026-02-23 17:23:48] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/register","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/register","segments":["api","auth","register"]}
+[2026-02-23 17:23:48] DEBUG: AuthController::register - Start 
+[2026-02-23 17:23:48] DEBUG: AuthController::register - Invalid JSON body {"raw_length":2,"json_error":"Syntax error"}
+[2026-02-23 17:23:48] ERROR: API Error: VALIDATION_ERROR - Invalid JSON body {"status_code":400}
+[2026-02-23 17:24:05] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":131,"parsed_body":null,"session_user_id":null}
+[2026-02-23 17:24:05] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/register","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/register","segments":["api","auth","register"]}
+[2026-02-23 17:24:05] DEBUG: AuthController::register - Start 
+[2026-02-23 17:24:05] DEBUG: AuthController::register - Invalid JSON body {"raw_length":131,"json_error":"Syntax error"}
+[2026-02-23 17:24:05] ERROR: API Error: VALIDATION_ERROR - Invalid JSON body {"status_code":400}
+[2026-02-23 17:24:25] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":155,"parsed_body":{"username":"testuser999","password":"***REDACTED***","full_name":"Test User","phone":"0501234567","address":"Riyadh Saudi Arabia","email":"test999@example.com"},"session_user_id":null}
+[2026-02-23 17:24:25] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/register","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/register","segments":["api","auth","register"]}
+[2026-02-23 17:24:25] DEBUG: AuthController::register - Start 
+[2026-02-23 17:24:25] DEBUG: AuthController::register - Request data received {"username":"testuser999","full_name":"Test User","email":"test999@example.com","phone":"0501234567","address":"Riyadh Saudi Arabia","has_password":true}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Start {"username":"testuser999","full_name":"Test User","email":"test999@example.com","phone":"0501234567","address":"Riyadh Saudi Arabia"}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Transaction started 
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Preparing INSERT into users table {"columns":"username, password_hash, full_name, phone, address, email, role, account_status"}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Executing INSERT into users 
+[2026-02-23 17:24:25] DEBUG: UserModel::register - User inserted successfully {"user_id":"4"}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Preparing INSERT into customers table {"columns":"user_id"}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Executing INSERT into customers 
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Customer inserted successfully {"customer_id":"2"}
+[2026-02-23 17:24:25] DEBUG: UserModel::register - Transaction committed successfully 
+[2026-02-23 17:24:25] DEBUG: AuthController::register - User registered successfully {"user_id":"4","customer_id":"2"}
+[2026-02-23 17:24:25] DEBUG: AuthController::register - Session set {"session_id":"cdvf4hb6ooll9tb90hcop6ajf5"}
+[2026-02-23 17:26:28] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":187,"parsed_body":{"username":"s12323069@stu.najah.edu","password":"***REDACTED***","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"1111111115","address":"nablus"},"session_user_id":null}
+[2026-02-23 17:26:28] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/register","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/register","segments":["api","auth","register"]}
+[2026-02-23 17:26:28] DEBUG: AuthController::register - Start 
+[2026-02-23 17:26:28] DEBUG: AuthController::register - Request data received {"username":"s12323069@stu.najah.edu","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"1111111115","address":"nablus","has_password":true}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Start {"username":"s12323069@stu.najah.edu","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"1111111115","address":"nablus"}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Transaction started 
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Preparing INSERT into users table {"columns":"username, password_hash, full_name, phone, address, email, role, account_status"}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Executing INSERT into users 
+[2026-02-23 17:26:28] DEBUG: UserModel::register - User inserted successfully {"user_id":"5"}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Preparing INSERT into customers table {"columns":"user_id"}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Executing INSERT into customers 
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Customer inserted successfully {"customer_id":"3"}
+[2026-02-23 17:26:28] DEBUG: UserModel::register - Transaction committed successfully 
+[2026-02-23 17:26:28] DEBUG: AuthController::register - User registered successfully {"user_id":"5","customer_id":"3"}
+[2026-02-23 17:26:28] DEBUG: AuthController::register - Session set {"session_id":"16p577n9hhqlslph44h0ld921d"}
+[2026-02-23 17:44:22] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":48,"parsed_body":{"username":"testuser999","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 17:44:22] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 17:44:40] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":4}
+[2026-02-23 17:44:40] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 17:45:01] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/debug\/db-check","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":4}
+[2026-02-23 17:45:01] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/debug\/db-check","base_path":"\/ssms-backend\/public","clean_uri":"api\/debug\/db-check","segments":["api","debug","db-check"]}
+[2026-02-23 17:46:03] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/debug\/ping","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 17:46:03] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/debug\/ping","base_path":"\/ssms-backend\/public","clean_uri":"api\/debug\/ping","segments":["api","debug","ping"]}
+[2026-02-23 17:48:31] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":48,"parsed_body":{"username":"testuser999","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 17:48:31] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 17:49:08] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":27,"parsed_body":{"stone_id":3,"quantity":2},"session_user_id":4}
+[2026-02-23 17:49:08] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 17:49:08] DEBUG: CartModel::addItem {"customer_id":2,"stone_id":3,"quantity":2}
+[2026-02-23 17:49:08] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:49:08] DEBUG: CartModel::getOrCreateCart - Created new cart {"cart_id":"1"}
+[2026-02-23 17:49:08] DEBUG: CartModel::addItem - Inserted new item {"cart_item_id":"1","unit_price":"250.00"}
+[2026-02-23 17:49:08] DEBUG: CartModel::getCart {"customer_id":2}
+[2026-02-23 17:49:08] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:49:08] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 17:49:08] DEBUG: CartModel::getCart - Result {"cart_id":1,"item_count":1,"total":500}
+[2026-02-23 17:49:37] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":27,"parsed_body":{"stone_id":4,"quantity":3},"session_user_id":4}
+[2026-02-23 17:49:37] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 17:49:37] DEBUG: CartModel::addItem {"customer_id":2,"stone_id":4,"quantity":3}
+[2026-02-23 17:49:37] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:49:37] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 17:49:37] DEBUG: CartModel::addItem - Inserted new item {"cart_item_id":"2","unit_price":"180.00"}
+[2026-02-23 17:49:37] DEBUG: CartModel::getCart {"customer_id":2}
+[2026-02-23 17:49:37] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:49:37] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 17:49:37] DEBUG: CartModel::getCart - Result {"cart_id":1,"item_count":2,"total":1040}
+[2026-02-23 17:50:01] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/checkout","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":4}
+[2026-02-23 17:50:01] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/checkout","base_path":"\/ssms-backend\/public","clean_uri":"api\/checkout","segments":["api","checkout"]}
+[2026-02-23 17:50:01] DEBUG: OrderController::checkout - Start {"customer_id":2}
+[2026-02-23 17:50:01] DEBUG: CartModel::getCart {"customer_id":2}
+[2026-02-23 17:50:01] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:50:01] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 17:50:01] DEBUG: CartModel::getCart - Result {"cart_id":1,"item_count":2,"total":1040}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Start {"customer_id":2,"cart_id":1,"cart_items_count":2}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Transaction started 
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Total calculated {"total":1040}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Order inserted {"order_id":"1"}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Order detail inserted {"stone_id":4,"quantity":3,"unit_price":"180.00"}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Order detail inserted {"stone_id":3,"quantity":2,"unit_price":"250.00"}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Cart cleared {"cart_id":1,"items_deleted":2}
+[2026-02-23 17:50:01] DEBUG: OrderModel::createOrder - Transaction committed 
+[2026-02-23 17:50:01] DEBUG: OrderController::checkout - Order created {"order_id":1}
+[2026-02-23 17:50:35] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/cart","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":4}
+[2026-02-23 17:50:35] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/cart","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart","segments":["api","cart"]}
+[2026-02-23 17:50:35] DEBUG: CartModel::getCart {"customer_id":2}
+[2026-02-23 17:50:35] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 17:50:35] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 17:50:35] DEBUG: CartModel::getCart - Result {"cart_id":1,"item_count":0,"total":0}
+[2026-02-23 17:50:35] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":4}
+[2026-02-23 17:50:35] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/orders","segments":["api","orders"]}
+[2026-02-23 18:03:10] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:03:11] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:03:20] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/users","content_type":"","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 18:03:20] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/users","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/users","segments":["api","admin","users"]}
+[2026-02-23 18:03:28] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/admin\/users\/3\/reset-password","content_type":"application\/json","body_length":29,"parsed_body":{"new_password":"NewPass123"},"session_user_id":1}
+[2026-02-23 18:03:28] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/admin\/users\/3\/reset-password","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/users\/3\/reset-password","segments":["api","admin","users","3","reset-password"]}
+[2026-02-23 18:03:28] INFO: Admin reset password {"admin_user_id":1,"target_user_id":3}
+[2026-02-23 18:03:41] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/admin\/employees","content_type":"application\/json","body_length":180,"parsed_body":{"username":"emp_new","password":"***REDACTED***","full_name":"New Employee","email":"emp_new@ssms.local","phone":"0599999999","address":"Nablus","salary":3500,"date_hired":"2025-06-01"},"session_user_id":1}
+[2026-02-23 18:03:41] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/admin\/employees","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/employees","segments":["api","admin","employees"]}
+[2026-02-23 18:03:41] INFO: Admin created employee {"admin_user_id":1,"new_user_id":"6","new_employee_id":"2"}
+[2026-02-23 18:03:48] DEBUG: Incoming Request {"method":"PUT","uri":"\/ssms-backend\/public\/api\/admin\/users\/4\/status","content_type":"application\/json","body_length":22,"parsed_body":{"status":"Suspended"},"session_user_id":1}
+[2026-02-23 18:03:48] DEBUG: Router: parsed URI {"method":"PUT","raw_uri":"\/ssms-backend\/public\/api\/admin\/users\/4\/status","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/users\/4\/status","segments":["api","admin","users","4","status"]}
+[2026-02-23 18:04:00] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":48,"parsed_body":{"username":"testuser999","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:04:00] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:04:00] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:04:07] DEBUG: Incoming Request {"method":"PUT","uri":"\/ssms-backend\/public\/api\/admin\/users\/4\/status","content_type":"application\/json","body_length":19,"parsed_body":{"status":"Active"},"session_user_id":1}
+[2026-02-23 18:04:07] DEBUG: Router: parsed URI {"method":"PUT","raw_uri":"\/ssms-backend\/public\/api\/admin\/users\/4\/status","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/users\/4\/status","segments":["api","admin","users","4","status"]}
+[2026-02-23 18:04:16] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/audit-logs","content_type":"","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 18:04:16] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/audit-logs","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/audit-logs","segments":["api","admin","audit-logs"]}
+[2026-02-23 18:07:19] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":61,"parsed_body":{"username":"s12323069@stu.najah.edu","password":"***REDACTED***"},"session_user_id":"5"}
+[2026-02-23 18:07:20] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:08:17] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":5}
+[2026-02-23 18:08:17] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/orders","segments":["api","orders"]}
+[2026-02-23 18:08:23] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":1},"session_user_id":5}
+[2026-02-23 18:08:23] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:08:23] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:08:28] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":1},"session_user_id":5}
+[2026-02-23 18:08:28] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:08:28] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:08:28] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":1},"session_user_id":5}
+[2026-02-23 18:08:28] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:08:28] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:08:30] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":2},"session_user_id":5}
+[2026-02-23 18:08:30] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:08:30] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:08:38] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":2},"session_user_id":5}
+[2026-02-23 18:08:38] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:08:38] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:11:27] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 18:11:27] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 18:13:01] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":34,"parsed_body":{"stone_id":"STN004","quantity":2},"session_user_id":5}
+[2026-02-23 18:13:01] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:13:01] ERROR: API Error: VALIDATION_ERROR - Stone ID must be a number {"status_code":400}
+[2026-02-23 18:13:55] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":53,"parsed_body":{"username":"admin@ssms.local","password":"***REDACTED***"},"session_user_id":5}
+[2026-02-23 18:13:55] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:13:55] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:13:59] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":53,"parsed_body":{"username":"admin@ssms.local","password":"***REDACTED***"},"session_user_id":5}
+[2026-02-23 18:13:59] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:13:59] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:14:16] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":54,"parsed_body":{"username":"admin@ssms.local","password":"***REDACTED***"},"session_user_id":5}
+[2026-02-23 18:14:16] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:14:16] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:14:23] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":54,"parsed_body":{"username":"admin@ssms.local","password":"***REDACTED***"},"session_user_id":5}
+[2026-02-23 18:14:23] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:14:23] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:14:49] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":5}
+[2026-02-23 18:14:49] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:15:01] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:15:01] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:15:09] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":58,"parsed_body":{"username":"s12323069@stu.najah.edu","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:15:09] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:15:09] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:15:16] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":48,"parsed_body":{"username":"testuser999","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:15:16] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:15:22] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/cart\/add","content_type":"application\/json","body_length":27,"parsed_body":{"stone_id":3,"quantity":1},"session_user_id":4}
+[2026-02-23 18:15:22] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/cart\/add","base_path":"\/ssms-backend\/public","clean_uri":"api\/cart\/add","segments":["api","cart","add"]}
+[2026-02-23 18:15:22] DEBUG: CartModel::addItem {"customer_id":2,"stone_id":3,"quantity":1}
+[2026-02-23 18:15:22] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 18:15:22] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 18:15:22] DEBUG: CartModel::addItem - Inserted new item {"cart_item_id":"3","unit_price":"250.00"}
+[2026-02-23 18:15:22] DEBUG: CartModel::getCart {"customer_id":2}
+[2026-02-23 18:15:22] DEBUG: CartModel::getOrCreateCart {"customer_id":2}
+[2026-02-23 18:15:22] DEBUG: CartModel::getOrCreateCart - Found existing cart {"cart_id":1}
+[2026-02-23 18:15:22] DEBUG: CartModel::getCart - Result {"cart_id":1,"item_count":1,"total":250}
+[2026-02-23 18:15:30] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones\/3","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 18:15:30] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones\/3","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones\/3","segments":["api","stones","3"]}
+[2026-02-23 18:15:30] ERROR: Uncaught exception in router {"error":"Undefined array key 3","code":0,"file":"C:\\wamp64\\www\\ssms-backend\\public\\index.php","line":221}
+[2026-02-23 18:15:30] ERROR: API Error: SERVER_ERROR - Server error: Undefined array key 3 {"status_code":500}
+[2026-02-23 18:15:52] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones\/3","content_type":"","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-02-23 18:15:52] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones\/3","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones\/3","segments":["api","stones","3"]}
+[2026-02-23 18:19:07] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:19:07] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:20:19] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:20:19] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:20:28] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":39,"parsed_body":{"username":"asdk","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:20:28] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:20:28] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:20:39] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":45,"parsed_body":{"username":"test@admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:20:39] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:20:39] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-02-23 18:20:49] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:20:49] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:22:07] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:22:07] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:25:36] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:25:36] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:33:06] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 18:33:06] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:36:08] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:36:08] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:36:16] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:36:16] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:36:25] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:36:25] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:36:40] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 18:36:40] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 18:36:53] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 18:36:53] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 18:36:53] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 18:36:53] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 18:36:53] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 18:36:53] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:05:02] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:02] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:05:02] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:02] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:05:02] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:02] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:05:18] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:18] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:05:18] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:18] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:05:18] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:05:18] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:05:36] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 19:05:36] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 19:07:32] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 19:07:32] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 19:07:35] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:07:35] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:07:35] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:07:35] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:07:35] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:07:35] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:12:19] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-02-23 19:12:19] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 19:12:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:12:25] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:12:31] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:12:31] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:12:36] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:12:36] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:14:17] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 19:14:17] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 19:14:17] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:14:17] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:14:17] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:14:17] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:14:17] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:14:17] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-02-23 19:14:58] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:14:58] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:15:45] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:15:45] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:16:16] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:16:16] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:16:24] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:16:24] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:16:31] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-02-23 19:16:31] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-02-23 19:16:31] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:16:31] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-02-23 19:16:31] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:16:31] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-02-23 19:16:31] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-02-23 19:16:31] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-02 21:25:43] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-02 21:25:43] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-03-02 21:32:16] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"Admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-03-02 21:32:16] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-02 21:32:16] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-03-02 21:32:25] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-03-02 21:32:25] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-02 21:32:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:32:25] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-03-02 21:32:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:32:25] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-02 21:32:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:32:25] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-02 21:53:54] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":42,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-03-02 21:53:54] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-02 21:53:54] ERROR: API Error: VALIDATION_ERROR - Invalid username or password {"status_code":400}
+[2026-03-02 21:54:07] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-03-02 21:54:07] DEBUG: Router: parsed URI {"method":"POST","raw_uri":"\/ssms-backend\/public\/api\/auth\/login","base_path":"\/ssms-backend\/public","clean_uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-02 21:54:08] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:54:08] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-02 21:54:08] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:54:08] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-03-02 21:54:08] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 21:54:08] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-02 22:00:48] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 22:00:48] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/orders","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-02 22:00:48] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 22:00:48] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/stones","base_path":"\/ssms-backend\/public","clean_uri":"api\/stones","segments":["api","stones"]}
+[2026-03-02 22:00:48] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-02 22:00:48] DEBUG: Router: parsed URI {"method":"GET","raw_uri":"\/ssms-backend\/public\/api\/admin\/requests","base_path":"\/ssms-backend\/public","clean_uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-10 16:49:42] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-10 16:49:42] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-10 16:50:04] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones\/4","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-10 16:50:04] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones\/4","segments":["api","stones","4"]}
+[2026-03-10 16:50:04] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones\/4\/reviews","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-10 16:50:04] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones\/4\/reviews","segments":["api","stones","4","reviews"]}
+[2026-03-10 16:50:04] ERROR: Uncaught exception in router {"error":"round(): Passing null to parameter #1 ($num) of type int|float is deprecated","code":0,"file":"C:\\wamp64\\www\\ssms-backend\\models\\ReviewModel.php","line":87}
+[2026-03-10 16:50:04] ERROR: API Error: SERVER_ERROR - Server error: round(): Passing null to parameter #1 ($num) of type int|float is deprecated {"status_code":500}
+[2026-03-10 16:58:40] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/register","content_type":"application\/json","body_length":174,"parsed_body":{"username":"vlsi","password":"***REDACTED***","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"+9701111111115","address":"nablus"},"session_user_id":null}
+[2026-03-10 16:58:40] DEBUG: Router: parsed {"method":"POST","uri":"api\/auth\/register","segments":["api","auth","register"]}
+[2026-03-10 16:58:40] DEBUG: AuthController::register - Start 
+[2026-03-10 16:58:40] DEBUG: AuthController::register - Request data received {"username":"vlsi","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"+9701111111115","address":"nablus","has_password":true}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Start {"username":"vlsi","full_name":"\u0645\u062d\u0645\u062f \u064a\u0627\u0633\u0631 \u0645\u062d\u0645\u0648\u062f \u0634\u0648\u0644\u064a","email":"s12323069@stu.najah.edu","phone":"+9701111111115","address":"nablus"}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Transaction started 
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Preparing INSERT into users table {"columns":"username, password_hash, full_name, phone, address, email, role, account_status"}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Executing INSERT into users 
+[2026-03-10 16:58:40] DEBUG: UserModel::register - User inserted successfully {"user_id":"7"}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Preparing INSERT into customers table {"columns":"user_id"}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Executing INSERT into customers 
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Customer inserted successfully {"customer_id":"4"}
+[2026-03-10 16:58:40] DEBUG: UserModel::register - Transaction committed successfully 
+[2026-03-10 16:58:40] DEBUG: AuthController::register - User registered successfully {"user_id":"7","customer_id":"4"}
+[2026-03-10 16:58:40] DEBUG: AuthController::register - Session set {"session_id":"ue7mtvq8ku91d8i1vadshsplg4"}
+[2026-03-10 17:11:06] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":"7"}
+[2026-03-10 17:11:06] DEBUG: Router: parsed {"method":"GET","uri":"api\/orders","segments":["api","orders"]}
+[2026-03-10 17:40:18] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":"7"}
+[2026-03-10 17:40:18] DEBUG: Router: parsed {"method":"GET","uri":"api\/orders","segments":["api","orders"]}
+[2026-03-11 10:50:09] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 10:50:09] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:54:10] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:54:10] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:54:18] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:54:18] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:56:16] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:56:16] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:56:52] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:56:52] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:56:53] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:56:53] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:56:53] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:56:53] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:59:10] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:59:10] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 11:59:17] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 11:59:17] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 12:00:03] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 12:00:03] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 12:01:27] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 12:01:27] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 12:01:27] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 12:01:27] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 12:56:09] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 12:56:09] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 13:36:59] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 13:36:59] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 13:54:51] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 13:54:51] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 14:01:38] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 14:01:38] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-11 14:01:39] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-11 14:01:39] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 10:38:46] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 10:38:46] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:06:10] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:06:10] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:06:19] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:06:19] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:09:24] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:09:24] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:09:26] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:09:26] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:09:27] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:09:27] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:16:03] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:16:03] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:20:58] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:20:58] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:21:06] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":null}
+[2026-03-14 11:21:06] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:21:24] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":null}
+[2026-03-14 11:21:24] DEBUG: Router: parsed {"method":"POST","uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-14 11:21:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:21:25] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:21:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:21:25] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:21:25] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:21:25] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-14 11:22:07] DEBUG: Incoming Request {"method":"POST","uri":"\/ssms-backend\/public\/api\/auth\/login","content_type":"application\/json","body_length":43,"parsed_body":{"username":"admin","password":"***REDACTED***"},"session_user_id":1}
+[2026-03-14 11:22:07] DEBUG: Router: parsed {"method":"POST","uri":"api\/auth\/login","segments":["api","auth","login"]}
+[2026-03-14 11:22:07] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:22:07] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:22:07] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:22:07] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:22:07] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:22:07] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-14 11:31:02] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:31:02] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:31:02] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders\/1","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:31:02] DEBUG: Router: parsed {"method":"GET","uri":"api\/orders\/1","segments":["api","orders","1"]}
+[2026-03-14 11:33:40] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:40] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:33:40] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/orders\/1","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:40] DEBUG: Router: parsed {"method":"GET","uri":"api\/orders\/1","segments":["api","orders","1"]}
+[2026-03-14 11:33:58] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:58] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:33:59] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:59] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:33:59] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:59] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:33:59] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:59] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-14 11:33:59] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:33:59] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:34:04] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:04] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:34:04] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:04] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:34:04] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:04] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/requests","segments":["api","admin","requests"]}
+[2026-03-14 11:34:12] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/orders","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:12] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/orders","segments":["api","admin","orders"]}
+[2026-03-14 11:34:12] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/stones","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:12] DEBUG: Router: parsed {"method":"GET","uri":"api\/stones","segments":["api","stones"]}
+[2026-03-14 11:34:12] DEBUG: Incoming Request {"method":"GET","uri":"\/ssms-backend\/public\/api\/admin\/requests","content_type":"application\/json","body_length":0,"parsed_body":null,"session_user_id":1}
+[2026-03-14 11:34:12] DEBUG: Router: parsed {"method":"GET","uri":"api\/admin\/requests","segments":["api","admin","requests"]}

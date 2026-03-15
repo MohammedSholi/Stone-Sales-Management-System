@@ -1,0 +1,268 @@
+/* Admin Orders Manage Page */
+
+.orders-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.orders-page-header h1 {
+  margin: 0;
+}
+
+.orders-page-header p {
+  margin: 0;
+}
+
+.orders-overview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.orders-metric {
+  margin: 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(
+    135deg,
+    var(--color-surface),
+    color-mix(in srgb, var(--color-surface) 80%, #ffffff 20%)
+  );
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.orders-metric-label {
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.orders-metric-value {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.tabs.mb-xl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-surface) 92%, #ffffff 8%),
+    color-mix(in srgb, var(--color-surface) 84%, #ffffff 16%)
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs.mb-xl .tab-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.55rem 1rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabs.mb-xl .tab-btn:hover {
+  color: var(--color-primary);
+  border-color: color-mix(
+    in srgb,
+    var(--color-border) 80%,
+    var(--color-accent) 20%
+  );
+  background: color-mix(in srgb, var(--color-surface) 88%, #ffffff 12%);
+}
+
+.tabs.mb-xl .tab-btn.active {
+  color: #fff;
+  border-color: color-mix(in srgb, var(--color-accent) 70%, #000 30%);
+  background: linear-gradient(135deg, var(--color-accent), #996633);
+  box-shadow: 0 8px 18px rgba(176, 122, 62, 0.28);
+}
+
+.focused-order-section[hidden] {
+  display: none;
+}
+
+.focused-order-card {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(
+    140deg,
+    var(--color-surface) 0%,
+    color-mix(in srgb, var(--color-surface) 86%, #ffffff 14%) 100%
+  );
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.focused-order-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.focused-order-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.focused-order-subtitle {
+  margin: var(--spacing-xs) 0 0 0;
+  color: var(--color-text-muted);
+}
+
+.focused-order-body {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+}
+
+.order-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.order-info-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  background-color: color-mix(in srgb, var(--color-surface) 94%, #ffffff 6%);
+}
+
+.order-info-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.order-info-value {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.focused-order-actions {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: color-mix(in srgb, var(--color-surface) 95%, #ffffff 5%);
+  padding: var(--spacing-lg);
+}
+
+.focused-order-actions h3 {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.focused-order-actions .form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.focused-order-items {
+  margin-top: var(--spacing-md);
+}
+
+.focused-order-items h3 {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.focused-order-note {
+  margin-top: var(--spacing-sm);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.orders-table-card .table td,
+.orders-table-card .table th {
+  vertical-align: middle;
+}
+
+.orders-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+body.dark-mode .orders-metric,
+body.dark-mode .focused-order-card,
+body.dark-mode .order-info-item,
+body.dark-mode .focused-order-actions {
+  background: #161b20;
+  border-color: #2a323a;
+}
+
+body.dark-mode .tabs.mb-xl {
+  border-color: #2a323a;
+  background: linear-gradient(135deg, #141a20, #1a2128);
+}
+
+body.dark-mode .tabs.mb-xl .tab-btn {
+  color: #a8b3c0;
+}
+
+body.dark-mode .tabs.mb-xl .tab-btn:hover {
+  color: #e7edf4;
+  border-color: #34414f;
+  background: #212a33;
+}
+
+body.dark-mode .tabs.mb-xl .tab-btn.active {
+  color: #121417;
+  border-color: #c49056;
+  background: linear-gradient(135deg, #d6a36f, #b07a3e);
+}
+
+@media (max-width: 1024px) {
+  .orders-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .focused-order-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .orders-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs.mb-xl {
+    padding: 0.5rem;
+  }
+
+  .tabs.mb-xl .tab-btn {
+    flex: 1 1 calc(50% - 0.55rem);
+    text-align: center;
+    padding: 0.55rem 0.75rem;
+  }
+
+  .focused-order-head,
+  .focused-order-body {
+    padding: var(--spacing-lg);
+  }
+
+  .order-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
