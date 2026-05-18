@@ -47,7 +47,15 @@
   function set(dark) {
     isDark = !!dark;
     localStorage.setItem(STORAGE_KEY, isDark ? "1" : "0");
-    document.documentElement.classList.toggle("dark-mode", isDark);
+
+    var root = document.documentElement;
+    root.classList.add("ssms-theme-transition");
+    window.clearTimeout(window.__ssmsThemeTransitionT);
+    window.__ssmsThemeTransitionT = window.setTimeout(function () {
+      root.classList.remove("ssms-theme-transition");
+    }, 480);
+
+    root.classList.toggle("dark-mode", isDark);
     document.body.classList.toggle("dark-mode", isDark);
 
     /* Keep every checkbox in sync (multiple toggles on page?) */

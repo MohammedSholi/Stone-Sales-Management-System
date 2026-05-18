@@ -89,7 +89,14 @@ function renderRecentOrders(orders) {
         Customer #${order.customer_id}<br>
         ${formatCurrency(parseFloat(order.total_amount || 0))}
       </div>
-      <a href="/admin/orders-manage.html?id=${order.order_id}" class="btn btn-primary btn-sm">View Details</a>
+      <div class="orders-actions">
+        <a href="/admin/orders-manage.html?id=${order.order_id}" class="btn btn-primary btn-sm">View Details</a>
+        ${
+          !order.employee_id
+            ? `<a href="/admin/orders-manage.html?id=${order.order_id}" class="btn btn-outline btn-sm">Assign Employee</a>`
+            : ""
+        }
+      </div>
     </div>
   `,
     )

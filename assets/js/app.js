@@ -3,6 +3,8 @@
  * Global initialization, navbar functionality, theme, helpers
  */
 
+import { initMotionEnhancements } from "./ui/motion.js";
+
 // ========== GLOBAL STATE ==========
 window.SSMS = {
   currentUser: null,
@@ -16,7 +18,23 @@ window.SSMS = {
     this.loadUserSession();
     this.loadLanguage();
     this.initNavbar();
+    this.ensureBrandingLogo();
     this.updateCartBadge();
+    initMotionEnhancements();
+  },
+
+  ensureBrandingLogo() {
+    try {
+      const brandingSrc = "/assets/img/branding/hajari-logo-transparent.png";
+      document.querySelectorAll(".navbar-logo").forEach((img) => {
+        if (!img) return;
+        // only replace when branding file exists (best-effort)
+        img.src = brandingSrc;
+        img.classList.add("navbar-logo-hajari");
+      });
+    } catch (e) {
+      // fail silently
+    }
   },
 
   loadUserSession() {
@@ -55,15 +73,32 @@ window.SSMS = {
   applyLanguage(language, shouldRefreshNavbar = true) {
     const nextLanguage = language === "ar" ? "ar" : "en";
     const direction = nextLanguage === "ar" ? "rtl" : "ltr";
+    const previousLanguage = this.currentLanguage;
 
     this.currentLanguage = nextLanguage;
     document.documentElement.setAttribute("lang", nextLanguage);
     document.documentElement.setAttribute("dir", direction);
+    // Toggle RTL helper class on <body> so CSS can adjust layout when Arabic is active
+    try {
+      document.body.classList.toggle("is-rtl", nextLanguage === "ar");
+    } catch (e) {
+      // ignore if body not available yet
+    }
     localStorage.setItem(this.LANGUAGE_KEY, nextLanguage);
 
     if (shouldRefreshNavbar) {
       this.updateNavbar();
     }
+
+    window.dispatchEvent(
+      new CustomEvent("ssms:languagechange", {
+        detail: {
+          language: nextLanguage,
+          previousLanguage,
+          direction,
+        },
+      }),
+    );
   },
 
   initNavbar() {
@@ -120,6 +155,7 @@ window.SSMS = {
       en: {
         home: "Home",
         catalog: "Catalog",
+        about: "About",
         dashboard: "Dashboard",
         login: "Login",
         signUp: "Sign Up",
@@ -129,12 +165,14 @@ window.SSMS = {
         adminPanel: "Admin Panel",
         logout: "Logout",
         search: "Search",
+        cart: "Cart",
         english: "English",
         arabic: "العربية",
       },
       ar: {
         home: "الرئيسية",
         catalog: "الكتالوج",
+        about: "من نحن",
         dashboard: "لوحة التحكم",
         login: "تسجيل الدخول",
         signUp: "إنشاء حساب",
@@ -144,6 +182,7 @@ window.SSMS = {
         adminPanel: "لوحة الإدارة",
         logout: "تسجيل الخروج",
         search: "بحث",
+        cart: "السلة",
         english: "English",
         arabic: "العربية",
       },
@@ -161,20 +200,24 @@ window.SSMS = {
       Guest: [
         { text: this.t("home"), href: "/index.php" },
         { text: this.t("catalog"), href: "/catalog/stones.html" },
+        { text: this.t("about"), href: "/about.html" },
       ],
       Customer: [
         { text: this.t("home"), href: "/index.php" },
         { text: this.t("catalog"), href: "/catalog/stones.html" },
+        { text: this.t("about"), href: "/about.html" },
         { text: this.t("dashboard"), href: "/customer/dashboard.html" },
       ],
       Employee: [
         { text: this.t("home"), href: "/index.php" },
         { text: this.t("catalog"), href: "/catalog/stones.html" },
+        { text: this.t("about"), href: "/about.html" },
         { text: this.t("dashboard"), href: "/employee/dashboard.html" },
       ],
       Admin: [
         { text: this.t("home"), href: "/index.php" },
         { text: this.t("catalog"), href: "/catalog/stones.html" },
+        { text: this.t("about"), href: "/about.html" },
         { text: this.t("dashboard"), href: "/admin/dashboard.html" },
       ],
     };
@@ -230,6 +273,11 @@ window.SSMS = {
     return source.slice(0, 2).toUpperCase();
   },
 
+  getUserAvatarUrl() {
+    if (!this.currentUser) return null;
+    return this.currentUser.avatar_url || null;
+  },
+
   escapeHTML(value = "") {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -245,7 +293,12 @@ window.SSMS = {
     return `
       <div class="navbar-utility-group">
         <a href="/catalog/stones.html" class="navbar-icon-btn" title="${this.t("search")}" aria-label="${this.t("search")}" data-action="search">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 1 1 4.77 13.29l4.72 4.72-1.42 1.41-4.72-4.71A7.5 7.5 0 0 1 10.5 3m0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11"/></svg>
+          <img src="https://cdn-icons-png.flaticon.com/512/16799/16799322.png" alt="" class="navbar-search-icon" aria-hidden="true" />
+        </a>
+
+        <a href="/cart/cart.html" class="navbar-icon-btn navbar-cart-link" title="${this.t("cart")}" aria-label="${this.t("cart")}">
+          <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="" class="navbar-cart-icon" aria-hidden="true" />
+          <span class="navbar-cart-badge" style="display:none">0</span>
         </a>
 
         <div class="navbar-language" data-dropdown="language">
@@ -285,21 +338,37 @@ window.SSMS = {
       ? "/admin/dashboard.html"
       : "/customer/my-orders.html";
     const ordersLabel = isAdmin ? this.t("adminPanel") : this.t("myOrders");
+    const profileHref =
+      roleKey === "Customer"
+        ? "/customer/profile.html"
+        : roleKey === "Admin"
+          ? "/admin/profile.html"
+          : dashboardHref;
+    const settingsHref =
+      roleKey === "Customer"
+        ? "/customer/settings.html"
+        : roleKey === "Admin"
+          ? "/admin/settings.html"
+          : `${dashboardHref}#settings`;
     const initials = this.escapeHTML(this.getUserInitials());
+    const avatarUrl = this.getUserAvatarUrl();
     const fullName = this.escapeHTML(
       this.currentUser.full_name || this.currentUser.username || "User",
     );
+    const avatarHTML = avatarUrl
+      ? `<img src="${this.escapeHTML(avatarUrl)}" alt="Profile avatar" class="navbar-avatar-image" />`
+      : initials;
 
     return `
       <div class="navbar-auth-group">
         <div class="navbar-profile" data-dropdown="profile">
           <button class="navbar-avatar-btn" type="button" aria-expanded="false" aria-haspopup="menu" data-toggle="profile" title="${fullName}">
-            <span class="navbar-avatar">${initials}</span>
+            <span class="navbar-avatar">${avatarHTML}</span>
           </button>
           <div class="navbar-dropdown navbar-profile-menu" data-menu="profile" role="menu" aria-label="Profile menu">
             <div class="navbar-dropdown-header">${fullName}</div>
-            <a href="${dashboardHref}" class="navbar-dropdown-item" role="menuitem">${this.t("myProfile")}</a>
-            <a href="${dashboardHref}#settings" class="navbar-dropdown-item" role="menuitem">${this.t("settings")}</a>
+            <a href="${profileHref}" class="navbar-dropdown-item" role="menuitem">${this.t("myProfile")}</a>
+            <a href="${settingsHref}" class="navbar-dropdown-item" role="menuitem">${this.t("settings")}</a>
             <a href="${ordersHref}" class="navbar-dropdown-item" role="menuitem">${ordersLabel}</a>
             <button class="navbar-dropdown-item is-danger" data-action="logout" role="menuitem">${this.t("logout")}</button>
           </div>
@@ -320,6 +389,7 @@ window.SSMS = {
       return `
         <a href="/auth/login.html" class="navbar-login-link">${this.t("login")}</a>
         <a href="/auth/register.html" class="navbar-signup-btn">${this.t("signUp")}</a>
+        <a href="/cart/cart.html" class="navbar-login-link navbar-cart-link">${this.t("cart")} <span class="navbar-cart-badge" style="display:none">0</span></a>
         ${languageMenu}
       `;
     }
@@ -336,9 +406,23 @@ window.SSMS = {
       ? "/admin/dashboard.html"
       : "/customer/my-orders.html";
     const ordersLabel = isAdmin ? this.t("adminPanel") : this.t("myOrders");
+    const profileHref =
+      roleKey === "Customer"
+        ? "/customer/profile.html"
+        : roleKey === "Admin"
+          ? "/admin/profile.html"
+          : dashboardHref;
+    const settingsHref =
+      roleKey === "Customer"
+        ? "/customer/settings.html"
+        : roleKey === "Admin"
+          ? "/admin/settings.html"
+          : `${dashboardHref}#settings`;
 
     return `
-      <a href="${dashboardHref}" class="navbar-login-link">${this.t("myProfile")}</a>
+      <a href="/cart/cart.html" class="navbar-login-link navbar-cart-link">${this.t("cart")} <span class="navbar-cart-badge" style="display:none">0</span></a>
+      <a href="${profileHref}" class="navbar-login-link">${this.t("myProfile")}</a>
+      <a href="${settingsHref}" class="navbar-login-link">${this.t("settings")}</a>
       <a href="${ordersHref}" class="navbar-login-link">${ordersLabel}</a>
       <button class="navbar-dropdown-item is-danger" data-action="logout">${this.t("logout")}</button>
       ${languageMenu}

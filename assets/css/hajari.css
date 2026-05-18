@@ -1,0 +1,41 @@
+/* Hajari (حجري) chatbot and accents */
+.hajari-chat-opener {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#83603a,#2b241f);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  cursor: pointer;
+  z-index: 1200;
+}
+.hajari-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 92px;
+  width: 360px;
+  max-height: 66vh;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 1200;
+}
+.hajari-panel.open { display: flex; }
+.hajari-panel__header { padding: 12px 14px; background: linear-gradient(90deg,#f6efe2,#efe6d8); display:flex; gap:8px; align-items:center; }
+.hajari-panel__header img { width:34px; height:34px; border-radius:6px; }
+.hajari-panel__body { padding:12px; overflow:auto; flex:1; font-size:0.95rem; color:#222; }
+.hajari-panel__input { display:flex; gap:8px; padding:10px; border-top:1px solid #eee; }
+.hajari-panel__input input { flex:1; padding:10px 12px; border-radius:8px; border:1px solid #ddd; }
+.hajari-panel__input button { background:linear-gradient(135deg,#7a5a3a,#3a2a20); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; }
+.hajari-msg { margin:6px 0; padding:8px 10px; border-radius:8px; background:#f4f1ee; }
+.hajari-msg.hajari-msg--bot { background:linear-gradient(180deg,#fff,#f6f1e8); border:1px solid #e6dccb; }
+.hajari-msg.hajari-msg--user { text-align:right; background:#efe9e2; }

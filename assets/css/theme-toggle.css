@@ -331,25 +331,48 @@
    ================================================ */
 body.dark-mode,
 html.dark-mode body {
-  --color-primary: #e8e0d6;
-  --color-background: #121417;
-  --color-surface: #1c1f24;
-  --color-text-main: #d9d5d0;
-  --color-text-muted: #8d8a86;
-  --color-border: #2e3138;
-  --color-hover: #23262c;
-  --color-shadow: rgba(0, 0, 0, 0.35);
-  --color-overlay: rgba(0, 0, 0, 0.7);
-  --color-secondary: #4a3f30;
-  --color-accent: #c99a56;
-  --color-accent-contrast: #1a1200;
-  --navbar-bg: rgba(28, 31, 36, 0.88);
-  --navbar-border: rgba(255, 255, 255, 0.06);
+  --color-primary: #e8e4dc;
+  --color-background: #0c0e12;
+  --color-surface: rgba(22, 26, 34, 0.88);
+  --color-text-main: #e6e2dc;
+  --color-text-muted: #8b9099;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-hover: rgba(255, 255, 255, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.45);
+  --color-overlay: rgba(4, 6, 10, 0.72);
+  --color-secondary: #5a4d3a;
+  --color-accent: #d4a057;
+  --color-accent-bright: #e8b86e;
+  --color-accent-contrast: #120c04;
+  --navbar-bg: rgba(16, 19, 26, 0.78);
+  --navbar-border: rgba(255, 255, 255, 0.07);
+  --glass-bg: rgba(22, 26, 34, 0.65);
+  --glass-bg-strong: rgba(30, 35, 44, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-outer: rgba(0, 0, 0, 0.35);
+  --glass-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --glow-accent:
+    0 0 0 1px rgba(212, 160, 87, 0.15), 0 24px 80px rgba(212, 160, 87, 0.08);
+}
+
+body.dark-mode {
+  background-image:
+    radial-gradient(
+      ellipse 100% 80% at 50% -25%,
+      rgba(212, 160, 87, 0.07),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 100% 0%,
+      rgba(80, 120, 220, 0.05),
+      transparent 50%
+    );
 }
 
 /* Prevent flash of light theme — applied to <html> before body exists */
 html.dark-mode {
-  background-color: #121417;
+  background-color: #0c0e12;
 }
 
 /* Navbar glassmorphism in dark mode */
@@ -392,7 +415,7 @@ body.dark-mode .navbar-language-toggle,
 body.dark-mode .navbar-avatar-btn,
 body.dark-mode .navbar-mobile-menu .navbar-login-link,
 body.dark-mode .navbar-mobile-menu .navbar-dropdown-item {
-  background-color: #171b20;
+  background-color: color-mix(in srgb, var(--color-surface) 88%, transparent);
   border-color: var(--color-border);
   color: var(--color-text-main);
 }
@@ -404,9 +427,9 @@ body.dark-mode .navbar-avatar-btn:hover {
 }
 
 body.dark-mode .navbar-dropdown {
-  background: #171b20;
-  border-color: var(--color-border);
-  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.45);
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-outer);
+  box-shadow: var(--glass-shadow), var(--glow-accent);
 }
 
 body.dark-mode .navbar-dropdown-item.is-danger {
@@ -466,8 +489,10 @@ body.dark-mode .btn-primary {
 }
 
 body.dark-mode .btn-primary:hover:not(:disabled) {
-  background-color: #d4ccc2;
-  color: #1a1a2e;
+  background-color: #b8a890;
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Accent button: gold bg needs dark text in dark mode */
@@ -488,7 +513,26 @@ body.dark-mode .btn-outline:hover:not(:disabled) {
   color: #1a1a2e;
 }
 
-body.dark-mode img {
+/* Dark mode: Keep subtle effect for About Hajari button in CTA section */
+body.dark-mode .home-cta__content .btn-outline:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.24);
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .home-cta__content .btn-outline:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.24),
+    0 0 0 3px rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode img:not(.navbar-logo) {
   opacity: 0.92;
 }
 
@@ -516,9 +560,10 @@ body.dark-mode .hero {
   background-color: #0f1214;
 }
 
-/* Footer already dark — keep it but lighten slightly for contrast */
+/* Footer — deeper cinematic bar */
 body.dark-mode .footer {
-  background-color: #0a0c0e;
+  background: linear-gradient(168deg, #060708 0%, #0c0f14 45%, #050607 100%);
+  border-top-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
 }
 
 /* Table rows */

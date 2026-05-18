@@ -72,6 +72,7 @@ require_once __DIR__ . '/../models/RequestModel.php';
 require_once __DIR__ . '/../models/ReviewModel.php';
 require_once __DIR__ . '/../models/NotificationModel.php';
 require_once __DIR__ . '/../models/AuditModel.php';
+require_once __DIR__ . '/../models/CustomerAccountModel.php';
 
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/StoneController.php';
@@ -81,6 +82,7 @@ require_once __DIR__ . '/../controllers/RequestController.php';
 require_once __DIR__ . '/../controllers/ReviewController.php';
 require_once __DIR__ . '/../controllers/NotificationController.php';
 require_once __DIR__ . '/../controllers/AdminController.php';
+require_once __DIR__ . '/../controllers/CustomerAccountController.php';
 
 // ─── 5. Parse request ───
 $method = $_SERVER['REQUEST_METHOD'];
@@ -347,6 +349,77 @@ try {
             $controller->markAsRead(intval($nSeg2));
         } else {
             jsonNotFound('Notifications endpoint not found');
+        }
+    }
+
+    // ================================================================
+    //  CUSTOMER ACCOUNT ROUTES
+    // ================================================================
+    elseif ($resource === 'customer') {
+        $controller = new CustomerAccountController();
+        $sub = seg(2);
+        $id = seg(3);
+
+        if ($sub === 'profile') {
+            if ($method === 'GET') {
+                $controller->getProfile();
+            } elseif ($method === 'PUT') {
+                $controller->updateProfile();
+            } else {
+                jsonNotFound('Customer profile endpoint not found');
+            }
+        } elseif ($sub === 'avatar' && $method === 'POST') {
+            $controller->uploadAvatar();
+        } elseif ($sub === 'password' && $method === 'PUT') {
+            $controller->changePassword();
+        } elseif ($sub === 'settings') {
+            if ($method === 'GET') {
+                $controller->getSettings();
+            } elseif ($method === 'PUT') {
+                $controller->updateSettings();
+            } else {
+                jsonNotFound('Customer settings endpoint not found');
+            }
+        } elseif ($sub === 'addresses') {
+            if ($method === 'GET' && $id === null) {
+                $controller->listAddresses();
+            } elseif (($method === 'POST' || $method === 'PUT') && $id === null) {
+                $controller->saveAddress();
+            } elseif ($method === 'DELETE' && $id !== null) {
+                $controller->deleteAddress(intval($id));
+            } else {
+                jsonNotFound('Customer addresses endpoint not found');
+            }
+        } elseif ($sub === 'payment-methods') {
+            if ($method === 'GET' && $id === null) {
+                $controller->listPaymentMethods();
+            } elseif ($method === 'POST' && $id === null) {
+                $controller->savePaymentMethod();
+            } elseif ($method === 'PUT' && $id !== null && seg(4) === 'default') {
+                $controller->setDefaultPaymentMethod(intval($id));
+            } elseif (($method === 'PUT' || $method === 'DELETE') && $id !== null) {
+                $controller->deletePaymentMethod(intval($id));
+            } else {
+                jsonNotFound('Customer payment methods endpoint not found');
+            }
+        } elseif ($sub === 'sessions') {
+            if ($method === 'GET' && $id === null) {
+                $controller->getSessions();
+            } elseif ($method === 'POST' && $id === 'logout-all') {
+                $controller->logoutAllSessions();
+            } else {
+                jsonNotFound('Customer sessions endpoint not found');
+            }
+        } elseif ($sub === 'account') {
+            if ($method === 'POST' && $id === 'deactivate') {
+                $controller->deactivateAccount();
+            } elseif ($method === 'DELETE' && $id === null) {
+                $controller->deleteAccount();
+            } else {
+                jsonNotFound('Customer account endpoint not found');
+            }
+        } else {
+            jsonNotFound('Customer endpoint not found');
         }
     }
 

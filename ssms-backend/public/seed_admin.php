@@ -12,7 +12,7 @@
  *
  * Default credentials after running:
  *   username: admin
- *   password: Admin@123
+ *   password: Admin123!
  */
 
 header('Content-Type: application/json; charset=UTF-8');

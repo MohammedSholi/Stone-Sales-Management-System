@@ -7,7 +7,16 @@ import { showConfirm } from "../ui/modal.js";
 import toast from "../ui/toast.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  if (!UserSession.isLoggedIn()) {
+  const role = (UserSession.getRole() || "").toLowerCase();
+  if (!UserSession.isLoggedIn() || role !== "customer") {
+    window.location.href = "/auth/login.html";
+    return;
+  }
+
+  // Validate backend session is still active
+  const sessionValid = await validateBackendSession();
+  if (!sessionValid) {
+    UserSession.logout();
     window.location.href = "/auth/login.html";
     return;
   }
@@ -38,46 +47,79 @@ function renderOrderDetails(order) {
   const canCancel =
     order.order_status === "Pending" || order.order_status === "Assigned";
   const items = order.items || [];
+  const itemCount = items.length;
+
+  const renderDetail = (label, value) => `
+    <div class="order-detail-item">
+      <span class="order-detail-label">${label}</span>
+      <p class="order-detail-value">${value || "—"}</p>
+    </div>
+  `;
 
   const html = `
-    <div class="flex justify-between items-start mb-2xl">
-      <div>
-        <h1 class="mb-sm">Order #${order.order_id}</h1>
-        <p class="text-muted">${formatDate(order.order_date)}</p>
+    <section class="order-details-hero card">
+      <div class="order-details-hero__copy">
+        <span class="order-details-kicker">Customer Order Details</span>
+        <h1 class="order-details-title">Order #${order.order_id}</h1>
+        <p class="order-details-subtitle">Placed on ${formatDate(order.order_date)}</p>
       </div>
-      <div class="flex gap-md items-center">
+      <div class="order-details-hero__actions">
         <span class="badge badge-${getStatusBadgeClass(order.order_status)} badge-lg">${order.order_status}</span>
         ${canCancel ? `<button id="cancelOrderBtn" class="btn btn-danger btn-sm" data-order-id="${order.order_id}">Cancel Order</button>` : ""}
       </div>
-    </div>
+    </section>
 
-    <div class="grid grid-cols-2 gap-2xl mb-2xl">
-      <div class="card">
-        <h3 class="mb-lg">Customer Information</h3>
-        <div class="mb-md"><strong>Name:</strong> ${order.customer_name || ""}</div>
-        <div class="mb-md"><strong>Email:</strong> ${order.customer_email || ""}</div>
-        <div class="mb-md"><strong>Phone:</strong> ${order.customer_phone || ""}</div>
-        <div><strong>Address:</strong> ${order.customer_address || ""}</div>
-      </div>
-      
-      <div class="card">
-        <h3 class="mb-lg">Order Summary</h3>
-        <div class="flex justify-between mb-sm">
-          <span>Subtotal:</span>
-          <span>${formatCurrency(order.total_amount)}</span>
+    <div class="order-details-grid">
+      <div class="card order-details-card">
+        <div class="order-details-card__header">
+          <div>
+            <h3>Customer Information</h3>
+            <p>Contact and delivery details for this order.</p>
+          </div>
         </div>
-        <div class="divider"></div>
-        <div class="flex justify-between">
-          <strong>Total:</strong>
+        <div class="order-detail-list">
+          ${renderDetail("Name", order.customer_name)}
+          ${renderDetail("Email", order.customer_email)}
+          ${renderDetail("Phone", order.customer_phone)}
+          ${renderDetail("Address", order.customer_address)}
+        </div>
+      </div>
+
+      <div class="card order-details-card order-summary-card">
+        <div class="order-details-card__header">
+          <div>
+            <h3>Order Summary</h3>
+            <p>A quick view of the order total and item count.</p>
+          </div>
+        </div>
+
+        <div class="order-summary-list">
+          <div class="order-summary-row">
+            <span>Items</span>
+            <strong>${itemCount}</strong>
+          </div>
+          <div class="order-summary-row">
+            <span>Subtotal</span>
+            <strong>${formatCurrency(order.total_amount)}</strong>
+          </div>
+        </div>
+
+        <div class="order-summary-total">
+          <span>Total</span>
           <strong class="text-accent">${formatCurrency(order.total_amount)}</strong>
         </div>
       </div>
     </div>
 
-    <div class="card mb-2xl">
-      <h3 class="mb-lg">Order Items</h3>
-      <div class="table-container">
-        <table class="table">
+    <div class="card order-details-card order-items-card">
+      <div class="order-details-card__header">
+        <div>
+          <h3>Order Items</h3>
+          <p>${itemCount} ${itemCount === 1 ? "item" : "items"} in this order.</p>
+        </div>
+      </div>
+      <div class="table-container order-items-table-container">
+        <table class="table order-items-table">
           <thead>
             <tr>
               <th>Item</th>
@@ -91,7 +133,7 @@ function renderOrderDetails(order) {
               .map(
                 (item) => `
               <tr>
-                <td>${item.name || "Stone #" + item.stone_id}</td>
+                <td class="order-item-name">${item.name || "Stone #" + item.stone_id}</td>
                 <td>${formatCurrency(item.unit_price)}</td>
                 <td>${item.quantity_ordered}</td>
                 <td>${formatCurrency(item.subtotal)}</td>
@@ -147,4 +189,15 @@ function getStatusBadgeClass(status) {
     Canceled: "canceled",
   };
   return classes[status] || "primary";
+}
+
+async function validateBackendSession() {
+  try {
+    const response = await apiCall("/auth/me");
+    // Session is valid if we get any successful response with user data
+    return response && (response.data || response.user_id);
+  } catch (err) {
+    console.error("Session validation error:", err);
+    return false;
+  }
 }

@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - SSMS</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>Login - Hajari</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
@@ -15,10 +13,13 @@
     <link rel="stylesheet" href="/assets/css/base.css?v=2" />
     <link rel="stylesheet" href="/assets/css/components.css?v=2" />
     <link rel="stylesheet" href="/assets/css/layout.css?v=11" />
-    <link rel="stylesheet" href="/assets/css/pages/auth.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/pages/auth.css?v=7" />
     <link rel="stylesheet" href="/assets/css/pages/stone-golem.css?v=2" />
     <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=4" />
-    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
     <script src="/assets/js/theme.js"></script>
   </head>
   <body>
@@ -56,118 +57,204 @@
       </label>
     </div>
 
-    <div class="auth-container">
-      <div class="auth-box">
-        <div class="auth-header">
-          <a href="/index.php" class="auth-logo">
-            <img src="/assets/img/logo.svg" alt="SSMS" class="navbar-logo" />
-            <span>SSMS</span>
-          </a>
-          <h1 class="auth-title">Welcome Back</h1>
-          <p class="auth-subtitle">Sign in to your account to continue</p>
+    <!-- Minimal Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand">
+          <img
+            src="/assets/img/branding/hajari-logo-transparent.png"
+            alt="Hajari"
+            class="navbar-logo navbar-logo-hajari auth-page-brand-logo"
+          />
+          <span>Hajari / حجري</span>
+        </a>
+        <div class="navbar-center"></div>
+        <div class="navbar-right">
+          <a href="/auth/register.html" class="navbar-login-link">Register</a>
         </div>
+      </div>
+    </nav>
 
-        <!-- Stone Golem Mascot -->
-        <div class="golem-container" id="golemContainer"></div>
-
-        <form class="auth-form" id="loginForm">
-          <div class="form-group">
-            <label for="username" class="form-label required">Username</label>
-            <input
-              type="text"
-              id="username"
-              class="form-input"
-              placeholder="Enter your username"
-              required
+    <main class="auth-premium-bg auth-layout-wrap">
+      <div class="auth-layout-grid">
+        <aside class="auth-layout-brand">
+          <a class="auth-premium-logo" href="/index.php">
+            <img
+              src="/assets/img/branding/hajari-logo-transparent.png"
+              alt="Hajari"
+              class="auth-page-brand-logo"
             />
-            <span class="form-error" id="usernameError"></span>
+          </a>
+          <div class="auth-layout-brand-content">
+            <div class="auth-premium-golem-hero">
+              <div class="golem-container golem-hero" id="golemContainer"></div>
+            </div>
+            <h2 class="auth-premium-title">Welcome Back</h2>
+            <p class="auth-premium-desc">
+              Sign in to manage orders, track updates, and access your account
+              dashboard.
+            </p>
+            <div class="auth-premium-features auth-layout-feature-list">
+              <span class="auth-premium-feature">Secure Access</span>
+              <span class="auth-premium-feature">Order Tracking</span>
+              <span class="auth-premium-feature">Premium Support</span>
+            </div>
           </div>
+          <p class="auth-premium-copyright">© 2026 Hajari — حجري</p>
+        </aside>
 
-          <div class="form-group">
-            <label for="password" class="form-label required">Password</label>
-            <div class="password-wrapper">
-              <input
-                type="password"
-                id="password"
-                class="form-input"
-                placeholder="Enter your password"
-                required
-              />
-              <button
-                type="button"
-                class="password-toggle"
-                aria-label="Toggle password visibility"
+        <section class="auth-layout-form-panel">
+          <div class="auth-layout-form-card">
+            <div class="auth-header auth-header-hajari auth-layout-header">
+              <h1 class="auth-title auth-title-hajari auth-layout-title">
+                Sign In
+              </h1>
+              <p class="auth-layout-subtitle">
+                Use your username and password to continue.
+              </p>
+            </div>
+
+            <form
+              class="auth-form auth-layout-form"
+              id="loginForm"
+              autocomplete="on"
+            >
+              <div class="form-group">
+                <label for="username" class="form-label required"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  id="username"
+                  class="form-input"
+                  placeholder="e.g. hajari_user"
+                  required
+                />
+                <span class="form-error" id="usernameError"></span>
+              </div>
+
+              <div class="form-group password-wrapper">
+                <label for="password" class="form-label required"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="password"
+                  class="form-input"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="password"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  title="Show password"
+                >
+                  <svg
+                    class="icon-show"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg
+                    class="icon-hide"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                    ></path>
+                    <path
+                      d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                    ></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+                <span class="form-error" id="passwordError"></span>
+              </div>
+
+              <div class="form-group auth-layout-submit-wrap">
+                <button
+                  type="submit"
+                  class="btn-primary btn-block auth-layout-submit"
+                >
+                  Sign In
+                </button>
+              </div>
+            </form>
+
+            <div class="auth-footer auth-footer-compact auth-layout-footer">
+              <p class="footer-link-compact">
+                Don't have an account?
+                <a href="/auth/register.html">Register</a>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Full Site Footer for Consistency -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4 data-i18n="footerTitle">Hajari / حجري</h4>
+            <p class="footer-description" data-i18n="footerText">
+              A premium stone atelier for curated materials, design-led
+              sourcing, and elevated project execution rooted in Palestine and
+              global design.
+            </p>
+          </div>
+          <div class="footer-section">
+            <a href="/about.html" class="footer-link" data-i18n="footerAbout"
+              >About</a
+            >
+            <a
+              href="/customer/custom-request.html"
+              class="footer-link"
+              data-i18n="footerRequest"
+              >Custom Request</a
+            >
+            <a
+              href="/auth/login.html"
+              class="footer-link"
+              data-i18n="footerAdmin"
+              >Admin Login</a
+            >
+          </div>
+          <div class="footer-section">
+            <h4 data-i18n="footerContact">Contact</h4>
+            <div class="footer-links">
+              <span class="footer-link" data-i18n="footerPhone"
+                >+972 59-394-3350</span
               >
-                <svg
-                  class="icon-show"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                <svg
-                  class="icon-hide"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  style="display: none"
-                >
-                  <path
-                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
-                  />
-                  <path
-                    d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
-                  />
-                  <line x1="1" y1="1" x2="23" y2="23" />
-                </svg>
-              </button>
-            </div>
-            <span class="form-error" id="passwordError"></span>
-          </div>
-
-          <div class="form-group">
-            <div class="form-check">
-              <input type="checkbox" id="remember" />
-              <label for="remember">Remember me</label>
+              <span class="footer-link" data-i18n="footerEmail"
+                >info@hajari-stone.com</span
+              >
             </div>
           </div>
-
-          <button type="submit" class="btn btn-primary btn-lg w-full">
-            Sign In
-          </button>
-        </form>
-
-        <div class="auth-footer">
-          <p>
-            Don't have an account? <a href="/auth/register.html">Sign up</a>
+        </div>
+        <div class="footer-bottom">
+          <p data-i18n="footerRights">
+            © 2026 Hajari — حجري. All rights reserved.
           </p>
-          <p><a href="/index.php">← Back to Home</a></p>
         </div>
       </div>
-
-      <div class="auth-side">
-        <div class="auth-side-content">
-          <h2>Premium Stone Solutions</h2>
-          <p>
-            Access your account to manage orders, track deliveries, and explore
-            our extensive catalog of premium stones.
-          </p>
-          <ul class="auth-features">
-            <li>✓ Track orders in real-time</li>
-            <li>✓ Custom stone requests</li>
-            <li>✓ Exclusive member pricing</li>
-            <li>✓ Expert consultation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="/assets/js/ui/stone-golem.js"></script>
+    <script src="/assets/js/ui/stone-golem.js?v=2"></script>
     <script type="module" src="/assets/js/app.js?v=4"></script>
     <script type="module" src="/assets/js/pages/auth.js"></script>
   </body>

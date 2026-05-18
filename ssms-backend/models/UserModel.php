@@ -142,10 +142,11 @@ class UserModel {
     
     public function login($username, $password) {
         $stmt = $this->db->prepare("
-            SELECT u.*, c.customer_id, e.employee_id 
+            SELECT u.*, cas.avatar_url AS avatar_url, c.customer_id, e.employee_id 
             FROM users u
             LEFT JOIN customers c ON u.user_id = c.user_id
             LEFT JOIN employees e ON u.user_id = e.user_id
+            LEFT JOIN customer_account_settings cas ON u.user_id = cas.user_id
             WHERE u.username = ? AND u.account_status = 'Active'
         ");
         $stmt->execute([$username]);
@@ -187,6 +188,7 @@ class UserModel {
             FROM users u
             LEFT JOIN customers c ON u.user_id = c.user_id
             LEFT JOIN employees e ON u.user_id = e.user_id
+            LEFT JOIN customer_account_settings cas ON u.user_id = cas.user_id
             WHERE u.user_id = ?
         ");
         $stmt->execute([$userId]);

@@ -123,3 +123,127 @@
     width: 100%;
   }
 }
+
+/* ========== ENHANCED TAB STYLING FOR MY-ORDERS ========== */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(
+    135deg,
+    var(--color-surface),
+    color-mix(in srgb, var(--color-surface) 88%, #ffffff 12%)
+  );
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.tab-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: var(--color-primary);
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface) 60%,
+    var(--color-accent) 10%
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--color-border) 70%,
+    var(--color-accent) 30%
+  );
+  transform: translateY(-1px);
+}
+
+.tab-btn.active {
+  color: white;
+  background: linear-gradient(135deg, var(--color-accent), #996633);
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 20px rgba(176, 122, 62, 0.3);
+  font-weight: var(--font-weight-bold);
+}
+
+.tab-btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    white,
+    rgba(255, 255, 255, 0)
+  );
+  border-radius: 1px;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .tabs {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-surface) 95%, #ffffff 5%),
+    color-mix(in srgb, var(--color-surface) 88%, #ffffff 12%)
+  );
+  border-color: color-mix(in srgb, var(--color-border) 120%, #ffffff 5%);
+}
+
+body.dark-mode .tab-btn:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--color-surface) 50%,
+    var(--color-accent) 15%
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--color-border) 80%,
+    var(--color-accent) 40%
+  );
+}
+
+/* Responsive tabs */
+@media (max-width: 768px) {
+  .tabs {
+    gap: 0.4rem;
+    padding: 0.6rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs {
+    gap: 0.3rem;
+    padding: 0.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: var(--font-size-xs);
+  }
+}

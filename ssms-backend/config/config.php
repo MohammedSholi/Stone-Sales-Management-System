@@ -12,10 +12,11 @@ define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Application Settings
-define('BASE_URL', 'http://localhost/ssms-backend/public');
+define('SITE_URL', 'http://localhost/ssms-backend');
+define('BASE_URL', SITE_URL . '/public');
 define('API_BASE_URL', BASE_URL . '/api');
 define('UPLOAD_DIR', __DIR__ . '/../uploads/');
-define('UPLOAD_URL', BASE_URL . '/uploads/');
+define('UPLOAD_URL', SITE_URL . '/uploads/');
 define('LOGS_DIR', __DIR__ . '/../logs/');
 
 // Debug Mode (set to false in production)

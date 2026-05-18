@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - Hajari</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=13" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/pages/customer-account.css?v=1" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=6" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
+    <script src="/assets/js/theme.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand">
+          <img
+            src="/assets/img/logo-hajari.svg"
+            alt="Hajari"
+            class="navbar-logo"
+          />
+          <span>Hajari / حجري</span>
+        </a>
+        <div class="navbar-center"><div class="navbar-nav"></div></div>
+        <div class="navbar-right">
+          <div class="navbar-actions-utilities"></div>
+          <div class="theme-toggle">
+            <input
+              type="checkbox"
+              id="darkModeToggle"
+              class="theme-toggle__input"
+              aria-label="Toggle dark mode"
+            />
+            <label for="darkModeToggle" class="theme-toggle__label">
+              <span class="theme-toggle__sky"></span>
+              <span class="theme-toggle__sun"></span>
+              <span class="theme-toggle__moon"></span>
+              <div class="theme-toggle__stars">
+                <span class="theme-toggle__star theme-toggle__star--1"></span
+                ><span class="theme-toggle__star theme-toggle__star--2"></span
+                ><span class="theme-toggle__star theme-toggle__star--3"></span
+                ><span class="theme-toggle__star theme-toggle__star--4"></span
+                ><span class="theme-toggle__star theme-toggle__star--5"></span>
+              </div>
+              <span class="theme-toggle__cloud theme-toggle__cloud--1"></span
+              ><span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
+              <div class="theme-toggle__hills">
+                <span class="theme-toggle__hill theme-toggle__hill--1"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--3"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--2"></span
+                ><span class="theme-toggle__tree"
+                  ><div class="theme-toggle__tree-top"></div>
+                  <div class="theme-toggle__tree-trunk"></div
+                ></span>
+              </div>
+              <span class="theme-toggle__knob"></span>
+            </label>
+          </div>
+          <div class="navbar-actions-auth"></div>
+          <button class="navbar-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-nav"></div>
+        <div class="navbar-actions-mobile"></div>
+      </div>
+    </nav>
+
+    <main class="container account-page">
+      <div class="breadcrumb">
+        <a href="/customer/dashboard.html">Dashboard</a>
+        <span class="breadcrumb-divider">/</span>
+        <span>Settings</span>
+      </div>
+
+      <section class="card account-hero">
+        <div class="account-hero__left">
+          <div class="account-avatar" id="settingsAvatar">HJ</div>
+          <div>
+            <span class="account-kicker">Account Settings</span>
+            <h1 class="account-title" id="settingsTitle">
+              Personalize your account
+            </h1>
+            <p class="account-subtitle" id="settingsSubtitle">
+              Manage preferences, security, and saved information.
+            </p>
+          </div>
+        </div>
+        <div class="account-hero__actions">
+          <span class="badge badge-primary badge-lg">Secure</span>
+          <span class="badge badge-secondary badge-lg">Synced</span>
+        </div>
+      </section>
+
+      <div
+        class="account-tabs"
+        role="tablist"
+        aria-label="Account settings sections"
+      >
+        <button
+          class="account-tab-btn is-active"
+          data-tab="general"
+          type="button"
+        >
+          General
+        </button>
+        <button class="account-tab-btn" data-tab="notifications" type="button">
+          Notifications
+        </button>
+        <button class="account-tab-btn" data-tab="security" type="button">
+          Privacy & Security
+        </button>
+        <button class="account-tab-btn" data-tab="addresses" type="button">
+          Addresses
+        </button>
+        <button class="account-tab-btn" data-tab="payments" type="button">
+          Payment Methods
+        </button>
+        <button class="account-tab-btn" data-tab="account" type="button">
+          Account Management
+        </button>
+      </div>
+
+      <section class="account-panel is-active" data-panel="general">
+        <div class="account-card card">
+          <div class="account-card__header">
+            <div>
+              <h2>General Settings</h2>
+              <p>Language, currency, timezone, and appearance.</p>
+            </div>
+          </div>
+          <form id="generalSettingsForm" class="account-section">
+            <div class="account-split">
+              <div class="account-section">
+                <div class="account-list-item">
+                  <div class="account-list-item__title">
+                    <strong>Profile image</strong
+                    ><span class="mini-muted">PNG, JPG or WebP</span>
+                  </div>
+                  <input
+                    class="form-input"
+                    id="profileImageInput"
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp"
+                  />
+                  <p class="account-field-note">
+                    Upload a clear avatar. It will be shown in the header and
+                    profile pages.
+                  </p>
+                </div>
+                <div class="account-form-grid">
+                  <div>
+                    <label class="account-field-label" for="displayName"
+                      >Display Name</label
+                    >
+                    <input
+                      class="form-input"
+                      id="displayName"
+                      type="text"
+                      placeholder="How your account should be labeled"
+                    />
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="languageSelect"
+                      >Language</label
+                    >
+                    <select id="languageSelect" class="form-select">
+                      <option value="en">English</option>
+                      <option value="ar">Arabic</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="currencySelect"
+                      >Currency</label
+                    >
+                    <select id="currencySelect" class="form-select">
+                      <option value="USD">USD</option>
+                      <option value="ILS">ILS</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="timezoneSelect"
+                      >Timezone</label
+                    >
+                    <select id="timezoneSelect" class="form-select"></select>
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="themeSelect"
+                      >Theme Preference</label
+                    >
+                    <select id="themeSelect" class="form-select">
+                      <option value="system">System</option>
+                      <option value="light">Light</option>
+                      <option value="dark">Dark</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="recoveryEmail"
+                      >Recovery Email</label
+                    >
+                    <input
+                      class="form-input"
+                      id="recoveryEmail"
+                      type="email"
+                      placeholder="Backup email for account recovery"
+                    />
+                  </div>
+                  <div>
+                    <label class="account-field-label" for="recoveryPhone"
+                      >Recovery Phone</label
+                    >
+                    <input
+                      class="form-input"
+                      id="recoveryPhone"
+                      type="tel"
+                      placeholder="Optional phone number"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="account-list-item">
+                <div class="account-list-item__title">
+                  <strong>Current preview</strong
+                  ><span id="settingsPreviewBadge" class="badge badge-secondary"
+                    >System</span
+                  >
+                </div>
+                <div
+                  class="account-avatar"
+                  id="settingsAvatarPreview"
+                  style="width: 8rem; height: 8rem; border-radius: 2rem"
+                >
+                  HJ
+                </div>
+                <p class="account-field-note">
+                  Your avatar and theme update live when saved.
+                </p>
+              </div>
+            </div>
+            <div class="account-card__footer">
+              <span class="mini-muted"
+                >Preferences are synced with your account.</span
+              ><button class="btn btn-primary" type="submit">
+                Save General Settings
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="notifications">
+        <div class="account-card card">
+          <div class="account-card__header">
+            <div>
+              <h2>Notification Settings</h2>
+              <p>Choose how Hajari contacts you.</p>
+            </div>
+          </div>
+          <form id="notificationsForm" class="account-section">
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Email notifications</strong
+                ><span
+                  >Receive important account emails and order updates.</span
+                >
+              </div>
+              <input
+                id="emailNotifications"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>SMS notifications</strong
+                ><span>Receive text updates for critical events.</span>
+              </div>
+              <input
+                id="smsNotifications"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Order updates</strong
+                ><span>Track every status change for your orders.</span>
+              </div>
+              <input
+                id="orderUpdates"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Marketing emails</strong
+                ><span>Occasional product and design inspiration.</span>
+              </div>
+              <input
+                id="marketingEmails"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Security alerts</strong
+                ><span>Be notified about sign-ins and sensitive actions.</span>
+              </div>
+              <input
+                id="securityAlerts"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <div class="account-card__footer">
+              <span class="mini-muted"
+                >These settings are saved to your account preferences.</span
+              ><button class="btn btn-primary" type="submit">
+                Save Notifications
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="security">
+        <div class="account-split">
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Change Password</h2>
+                <p>Update your password from this settings page.</p>
+              </div>
+            </div>
+            <form id="passwordForm" class="account-section">
+              <div>
+                <label class="account-field-label" for="settingsCurrentPassword"
+                  >Current Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="settingsCurrentPassword"
+                    type="password"
+                    autocomplete="current-password"
+                  />
+                  <button
+                    class="password-toggle"
+                    type="button"
+                    data-target="settingsCurrentPassword"
+                    aria-label="Show password"
+                  >
+                    <span class="icon-show" hidden>👁</span>
+                    <span class="icon-hide">🙈</span>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="account-field-label" for="settingsNewPassword"
+                  >New Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="settingsNewPassword"
+                    type="password"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    class="password-toggle"
+                    type="button"
+                    data-target="settingsNewPassword"
+                    aria-label="Show password"
+                  >
+                    <span class="icon-show" hidden>👁</span>
+                    <span class="icon-hide">🙈</span>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="account-field-label" for="settingsConfirmPassword"
+                  >Confirm Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="settingsConfirmPassword"
+                    type="password"
+                    autocomplete="new-password"
+                  />
+                  <button
+                    class="password-toggle"
+                    type="button"
+                    data-target="settingsConfirmPassword"
+                    aria-label="Show password"
+                  >
+                    <span class="icon-show" hidden>👁</span>
+                    <span class="icon-hide">🙈</span>
+                  </button>
+                </div>
+              </div>
+              <div class="account-card__footer">
+                <span class="mini-muted"
+                  >Use a strong unique password. This updates your login
+                  immediately.</span
+                ><button class="btn btn-primary" type="submit">
+                  Update Password
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Privacy & Security</h2>
+                <p>Protect your account with additional controls.</p>
+              </div>
+            </div>
+            <form id="securityForm" class="account-section">
+              <div class="toggle-row">
+                <div class="toggle-row__copy">
+                  <strong>Two-factor authentication</strong
+                  ><span>Add an extra verification step to sign in.</span>
+                </div>
+                <input
+                  id="twoFactorEnabled"
+                  type="checkbox"
+                  class="theme-toggle__input"
+                />
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-row__copy">
+                  <strong>Public profile</strong
+                  ><span
+                    >Allow your profile summary to be visible in supported
+                    areas.</span
+                  >
+                </div>
+                <input
+                  id="profilePublic"
+                  type="checkbox"
+                  class="theme-toggle__input"
+                />
+              </div>
+              <div class="account-card__footer">
+                <span class="mini-muted"
+                  >Current sessions and login history are shown on the
+                  right.</span
+                ><button class="btn btn-primary" type="submit">
+                  Save Security
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Active Sessions</h2>
+                <p>
+                  Review current devices and sign out everywhere when needed.
+                </p>
+              </div>
+              <button
+                id="logoutAllBtn"
+                class="btn btn-secondary btn-sm"
+                type="button"
+              >
+                Logout All Devices
+              </button>
+            </div>
+            <div id="sessionsList" class="account-list"></div>
+            <div
+              class="account-card__header"
+              style="margin-top: var(--spacing-lg)"
+            >
+              <div>
+                <h3>Login History</h3>
+                <p>Recent sign-ins from your account.</p>
+              </div>
+            </div>
+            <div id="loginHistoryList" class="account-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="addresses">
+        <div class="account-split">
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Saved Addresses</h2>
+                <p>Manage delivery and billing destinations.</p>
+              </div>
+            </div>
+            <div id="addressList" class="account-list"></div>
+          </div>
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2 id="addressFormTitle">Add Address</h2>
+                <p>Save a shipping or billing destination.</p>
+              </div>
+            </div>
+            <form id="addressForm" class="account-section">
+              <input type="hidden" id="addressId" />
+              <div class="account-form-grid">
+                <div>
+                  <label class="account-field-label" for="addressLabel"
+                    >Label</label
+                  ><input
+                    class="form-input"
+                    id="addressLabel"
+                    type="text"
+                    value="Home"
+                  />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressFullName"
+                    >Full Name</label
+                  ><input class="form-input" id="addressFullName" type="text" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressPhone"
+                    >Phone</label
+                  ><input class="form-input" id="addressPhone" type="tel" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressLine1"
+                    >Address Line 1</label
+                  ><input class="form-input" id="addressLine1" type="text" />
+                </div>
+                <div class="account-field--full">
+                  <label class="account-field-label" for="addressLine2"
+                    >Address Line 2</label
+                  ><input class="form-input" id="addressLine2" type="text" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressCity"
+                    >City</label
+                  ><input class="form-input" id="addressCity" type="text" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressCountry"
+                    >Country</label
+                  ><input class="form-input" id="addressCountry" type="text" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="addressPostalCode"
+                    >Postal Code</label
+                  ><input
+                    class="form-input"
+                    id="addressPostalCode"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="account-actions-row">
+                <label class="account-field-label"
+                  ><input type="checkbox" id="defaultShipping" /> Default
+                  shipping</label
+                >
+                <label class="account-field-label"
+                  ><input type="checkbox" id="defaultBilling" /> Default
+                  billing</label
+                >
+              </div>
+              <div class="account-card__footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-sm"
+                  id="cancelAddressEditBtn"
+                >
+                  Cancel Edit</button
+                ><button class="btn btn-primary" type="submit">
+                  Save Address
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="payments">
+        <div class="account-split">
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Saved Payment Methods</h2>
+                <p>Masked cards stored securely for convenience.</p>
+              </div>
+            </div>
+            <div id="paymentList" class="account-list"></div>
+          </div>
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Add Payment Method</h2>
+                <p>Store a new masked card on your profile.</p>
+              </div>
+            </div>
+            <form id="paymentForm" class="account-section">
+              <div class="account-form-grid">
+                <div class="account-field--full">
+                  <label class="account-field-label" for="cardNumber"
+                    >Card Number</label
+                  ><input
+                    class="form-input"
+                    id="cardNumber"
+                    type="text"
+                    inputmode="numeric"
+                  />
+                </div>
+                <div>
+                  <label class="account-field-label" for="cardHolder"
+                    >Card Holder Name</label
+                  ><input class="form-input" id="cardHolder" type="text" />
+                </div>
+                <div>
+                  <label class="account-field-label" for="cardMonth"
+                    >Expiry Month</label
+                  ><input
+                    class="form-input"
+                    id="cardMonth"
+                    type="number"
+                    min="1"
+                    max="12"
+                  />
+                </div>
+                <div>
+                  <label class="account-field-label" for="cardYear"
+                    >Expiry Year</label
+                  ><input
+                    class="form-input"
+                    id="cardYear"
+                    type="number"
+                    min="2024"
+                    max="2100"
+                  />
+                </div>
+              </div>
+              <label class="account-field-label"
+                ><input type="checkbox" id="defaultPayment" /> Set as default
+                payment method</label
+              >
+              <div class="account-card__footer">
+                <span class="mini-muted"
+                  >Only masked card data is stored in the database.</span
+                ><button class="btn btn-primary" type="submit">
+                  Save Card
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="account-panel" data-panel="account">
+        <div class="account-split">
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Data Export</h2>
+                <p>Download your personal account data and order history.</p>
+              </div>
+            </div>
+            <div class="account-actions-row">
+              <button
+                class="btn btn-secondary"
+                id="downloadPersonalDataBtn"
+                type="button"
+              >
+                Download Personal Data</button
+              ><button
+                class="btn btn-secondary"
+                id="exportOrdersBtn"
+                type="button"
+              >
+                Export Order History
+              </button>
+            </div>
+          </div>
+          <div class="account-card card">
+            <div class="account-card__header">
+              <div>
+                <h2>Account Management</h2>
+                <p>
+                  Deactivate or permanently remove the profile data from this
+                  account.
+                </p>
+              </div>
+            </div>
+            <form id="deactivateForm" class="account-section">
+              <div>
+                <label class="account-field-label" for="deactivatePassword"
+                  >Current Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="deactivatePassword"
+                    type="password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="deactivatePassword"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                    title="Show password"
+                  >
+                    <svg
+                      class="icon-show"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <svg
+                      class="icon-hide"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                      ></path>
+                      <path
+                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                      ></path>
+                      <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="account-actions-row">
+                <button class="btn btn-secondary" type="submit">
+                  Deactivate Account</button
+                ><button
+                  class="btn btn-danger"
+                  id="deleteAccountBtn"
+                  type="button"
+                >
+                  Delete Account
+                </button>
+              </div>
+              <p class="mini-muted">
+                Deactivating keeps your order records intact. Deleting
+                permanently anonymizes profile data and removes saved
+                addresses/cards.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Hajari / حجري</h4>
+            <p class="footer-description">
+              A premium stone atelier for curated materials, design-led
+              sourcing, and elevated project execution rooted in Palestine and
+              global design.
+            </p>
+          </div>
+          <div class="footer-section">
+            <a href="/about.html" class="footer-link">About</a>
+            <a href="/customer/custom-request.html" class="footer-link"
+              >Custom Request</a
+            >
+            <a href="/customer/profile.html" class="footer-link">My Profile</a>
+          </div>
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <span class="footer-link">+972 59-394-3350</span>
+              <span class="footer-link">info@hajari-stone.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js?v=7"></script>
+    <script
+      type="module"
+      src="/assets/js/pages/customer-settings.js?v=1"
+    ></script>
+  </body>
+</html>

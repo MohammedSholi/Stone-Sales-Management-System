@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Settings - Hajari</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=13" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/pages/customer-account.css?v=1" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=6" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
+    <script src="/assets/js/theme.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand"
+          ><img
+            src="/assets/img/logo-hajari.svg"
+            alt="Hajari"
+            class="navbar-logo"
+          /><span>Hajari / حجري</span></a
+        >
+        <div class="navbar-center"><div class="navbar-nav"></div></div>
+        <div class="navbar-right">
+          <div class="navbar-actions-utilities"></div>
+          <div class="theme-toggle">
+            <input
+              type="checkbox"
+              id="darkModeToggle"
+              class="theme-toggle__input"
+              aria-label="Toggle dark mode"
+            /><label for="darkModeToggle" class="theme-toggle__label"
+              ><span class="theme-toggle__sky"></span
+              ><span class="theme-toggle__sun"></span
+              ><span class="theme-toggle__moon"></span>
+              <div class="theme-toggle__stars">
+                <span class="theme-toggle__star theme-toggle__star--1"></span
+                ><span class="theme-toggle__star theme-toggle__star--2"></span
+                ><span class="theme-toggle__star theme-toggle__star--3"></span
+                ><span class="theme-toggle__star theme-toggle__star--4"></span
+                ><span class="theme-toggle__star theme-toggle__star--5"></span>
+              </div>
+              <span class="theme-toggle__cloud theme-toggle__cloud--1"></span
+              ><span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
+              <div class="theme-toggle__hills">
+                <span class="theme-toggle__hill theme-toggle__hill--1"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--3"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--2"></span
+                ><span class="theme-toggle__tree"
+                  ><div class="theme-toggle__tree-top"></div>
+                  <div class="theme-toggle__tree-trunk"></div
+                ></span>
+              </div>
+              <span class="theme-toggle__knob"></span
+            ></label>
+          </div>
+          <div class="navbar-actions-auth"></div>
+          <button class="navbar-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-nav"></div>
+        <div class="navbar-actions-mobile"></div>
+      </div>
+    </nav>
+
+    <main class="container account-page">
+      <div class="breadcrumb">
+        <a href="/admin/dashboard.html">Dashboard</a
+        ><span class="breadcrumb-divider">/</span><span>Settings</span>
+      </div>
+      <section class="card account-hero">
+        <div class="account-hero__left">
+          <div class="account-avatar" id="adminSettingsAvatar">AD</div>
+          <div>
+            <span class="account-kicker">Admin Settings</span>
+            <h1 class="account-title" id="adminSettingsTitle">
+              Platform preferences
+            </h1>
+            <p class="account-subtitle" id="adminSettingsSubtitle">
+              Control the look and behavior of the admin workspace.
+            </p>
+          </div>
+        </div>
+        <div class="account-hero__actions">
+          <span class="badge badge-primary badge-lg">Workspace</span>
+          <span class="badge badge-secondary badge-lg">Local</span>
+        </div>
+      </section>
+
+      <div class="account-grid">
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Display</h2>
+              <p>Theme and interface preferences for this browser.</p>
+            </div>
+          </div>
+          <div class="account-section">
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Dark mode</strong
+                ><span>Use the same theme toggle as the rest of the site.</span>
+              </div>
+              <input
+                id="adminDarkMode"
+                type="checkbox"
+                class="theme-toggle__input"
+                aria-label="Toggle dark mode"
+              />
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-row__copy">
+                <strong>Compact layout</strong
+                ><span>Keep the admin UI denser for faster scanning.</span>
+              </div>
+              <input
+                id="adminCompactLayout"
+                type="checkbox"
+                class="theme-toggle__input"
+              />
+            </div>
+            <button
+              id="saveAdminSettings"
+              class="btn btn-primary"
+              type="button"
+            >
+              Save Workspace Preferences
+            </button>
+          </div>
+        </section>
+
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Session</h2>
+              <p>Quick visibility into the current signed-in account.</p>
+            </div>
+          </div>
+          <div class="account-list" id="adminSessionList"></div>
+        </section>
+
+        <section class="card account-card account-card--wide">
+          <div class="account-card__header">
+            <div>
+              <h2>Admin Shortcuts</h2>
+              <p>
+                Jump back to operational work without hunting through the menu.
+              </p>
+            </div>
+          </div>
+          <div class="account-list account-form-grid">
+            <a class="account-list-item" href="/admin/dashboard.html"
+              ><div class="account-list-item__title">
+                <strong>Dashboard</strong>
+              </div>
+              <div class="account-list-item__meta">
+                Overview, metrics, and alerts.
+              </div></a
+            >
+            <a class="account-list-item" href="/admin/orders-manage.html"
+              ><div class="account-list-item__title">
+                <strong>Orders</strong>
+              </div>
+              <div class="account-list-item__meta">
+                Assignments and fulfillment flow.
+              </div></a
+            >
+            <a class="account-list-item" href="/admin/requests-manage.html"
+              ><div class="account-list-item__title">
+                <strong>Requests</strong>
+              </div>
+              <div class="account-list-item__meta">
+                Custom request queue and decisions.
+              </div></a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="/assets/js/app.js?v=8"></script>
+    <script type="module">
+      import { apiCall } from "/assets/js/api.js";
+      import { UserSession } from "/assets/js/storage.js";
+
+      const avatar = document.getElementById("adminSettingsAvatar");
+      const title = document.getElementById("adminSettingsTitle");
+      const subtitle = document.getElementById("adminSettingsSubtitle");
+      const sessionList = document.getElementById("adminSessionList");
+      const darkMode = document.getElementById("adminDarkMode");
+      const compactLayout = document.getElementById("adminCompactLayout");
+
+      const currentUser = UserSession.getUser() || {};
+      const fullName = currentUser.full_name || currentUser.username || "Admin";
+      const initials = (fullName.match(/\b\w/g) || ["A"])
+        .slice(0, 2)
+        .join("")
+        .toUpperCase();
+      avatar.textContent = initials;
+      title.textContent = `${fullName}'s settings`;
+      subtitle.textContent = `@${currentUser.username || "admin"} · adjust your workspace preferences.`;
+
+      darkMode.checked =
+        document.documentElement.classList.contains("dark-mode");
+      compactLayout.checked =
+        localStorage.getItem("admin_compact_layout") === "1";
+
+      document
+        .getElementById("saveAdminSettings")
+        .addEventListener("click", () => {
+          if (darkMode.checked) {
+            document.documentElement.classList.add("dark-mode");
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("ssms_dark_mode", "true");
+          } else {
+            document.documentElement.classList.remove("dark-mode");
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("ssms_dark_mode", "false");
+          }
+          localStorage.setItem(
+            "admin_compact_layout",
+            compactLayout.checked ? "1" : "0",
+          );
+          sessionList.innerHTML = `<div class="account-empty">Workspace preferences saved locally for this browser.</div>`;
+        });
+
+      try {
+        const response = await apiCall("/auth/me");
+        const user = response.data || response || {};
+        sessionList.innerHTML = [
+          ["Username", user.username || currentUser.username || "-"],
+          ["Role", user.role || currentUser.role || "Admin"],
+          ["Email", user.email || currentUser.email || "-"],
+        ]
+          .map(
+            ([label, value]) =>
+              `<div class="account-list-item"><div class="account-list-item__title"><strong>${label}</strong></div><div class="account-list-item__meta">${value}</div></div>`,
+          )
+          .join("");
+      } catch (error) {
+        sessionList.innerHTML = `<div class="account-empty">Unable to load session details.</div>`;
+      }
+    </script>
+  </body>
+</html>

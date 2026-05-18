@@ -3,48 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkout - SSMS</title>
-
+    <title>Checkout — Hajari</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="/assets/css/base.css?v=2" />
-    <link rel="stylesheet" href="/assets/css/components.css?v=2" />
-    <link rel="stylesheet" href="/assets/css/layout.css?v=11" />
-    <link rel="stylesheet" href="/assets/css/pages/cart.css" />
-    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=4" />
-    <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg" />
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=13" />
+    <link rel="stylesheet" href="/assets/css/pages/cart.css?v=2" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=6" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
     <script src="/assets/js/theme.js"></script>
   </head>
   <body>
-        <nav class="navbar">
+    <nav class="navbar">
       <div class="navbar-container">
         <a href="/index.php" class="navbar-brand">
-          <img src="/assets/img/logo.svg" alt="SSMS" class="navbar-logo" />
-          <span>SSMS</span>
+          <img
+            src="/assets/img/logo-hajari.svg"
+            alt="Hajari"
+            class="navbar-logo"
+          />
+          <span>Hajari / حجري</span>
         </a>
         <div class="navbar-center">
           <div class="navbar-nav"></div>
         </div>
         <div class="navbar-right">
-          <div class="navbar-actions"></div>
+          <div class="navbar-actions-utilities"></div>
           <div class="theme-toggle">
-            <input type="checkbox" id="darkModeToggle" class="theme-toggle__input" aria-label="Toggle dark mode" />
+            <input
+              type="checkbox"
+              id="darkModeToggle"
+              class="theme-toggle__input"
+              aria-label="Toggle dark mode"
+            />
             <label for="darkModeToggle" class="theme-toggle__label">
               <span class="theme-toggle__sky"></span>
               <span class="theme-toggle__sun"></span>
               <span class="theme-toggle__moon"></span>
-              <div class="theme-toggle__stars"><span class="theme-toggle__star theme-toggle__star--1"></span><span class="theme-toggle__star theme-toggle__star--2"></span><span class="theme-toggle__star theme-toggle__star--3"></span><span class="theme-toggle__star theme-toggle__star--4"></span><span class="theme-toggle__star theme-toggle__star--5"></span></div>
+              <div class="theme-toggle__stars">
+                <span class="theme-toggle__star theme-toggle__star--1"></span>
+                <span class="theme-toggle__star theme-toggle__star--2"></span>
+                <span class="theme-toggle__star theme-toggle__star--3"></span>
+                <span class="theme-toggle__star theme-toggle__star--4"></span>
+                <span class="theme-toggle__star theme-toggle__star--5"></span>
+              </div>
               <span class="theme-toggle__cloud theme-toggle__cloud--1"></span>
               <span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
-              <div class="theme-toggle__hills"><span class="theme-toggle__hill theme-toggle__hill--1"></span><span class="theme-toggle__hill theme-toggle__hill--3"></span><span class="theme-toggle__hill theme-toggle__hill--2"></span><span class="theme-toggle__tree"><div class="theme-toggle__tree-top"></div><div class="theme-toggle__tree-trunk"></div></span></div>
+              <div class="theme-toggle__hills">
+                <span class="theme-toggle__hill theme-toggle__hill--1"></span>
+                <span class="theme-toggle__hill theme-toggle__hill--3"></span>
+                <span class="theme-toggle__hill theme-toggle__hill--2"></span>
+                <span class="theme-toggle__tree">
+                  <div class="theme-toggle__tree-top"></div>
+                  <div class="theme-toggle__tree-trunk"></div>
+                </span>
+              </div>
               <span class="theme-toggle__knob"></span>
             </label>
           </div>
+          <div class="navbar-actions-auth"></div>
           <button class="navbar-toggle" aria-label="Toggle menu">
             <span></span><span></span><span></span>
           </button>
@@ -52,15 +77,24 @@
       </div>
       <div class="navbar-mobile-menu">
         <div class="navbar-nav"></div>
-        <div class="navbar-actions"></div>
+        <div class="navbar-actions-mobile"></div>
       </div>
     </nav>
 
     <div class="container mt-xl mb-4xl">
-      <h1 class="mb-xl">Checkout</h1>
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">Checkout</p>
+          <h1>Secure your curated stone order</h1>
+          <p class="page-intro">
+            Complete your details and we will handle the premium sourcing,
+            logistics, and white-glove delivery.
+          </p>
+        </div>
+      </header>
 
       <div class="cart-layout">
-        <div class="checkout-form">
+        <section class="checkout-form">
           <form id="checkoutForm">
             <div class="checkout-section">
               <h3>Contact Information</h3>
@@ -105,16 +139,16 @@
             </div>
 
             <div class="checkout-section">
-              <h3>Additional Notes</h3>
+              <h3>Order Notes</h3>
               <div class="form-group">
                 <label for="notes" class="form-label"
-                  >Order Notes (Optional)</label
+                  >Special instructions</label
                 >
                 <textarea
                   id="notes"
                   class="form-textarea"
                   rows="4"
-                  placeholder="Any special instructions for delivery..."
+                  placeholder="Any details for delivery or installation..."
                 ></textarea>
               </div>
             </div>
@@ -123,29 +157,40 @@
               Place Order
             </button>
           </form>
-        </div>
+        </section>
 
-        <div class="cart-summary">
+        <aside class="cart-summary">
           <h3>Order Summary</h3>
           <div id="orderItems" class="mb-lg"></div>
           <div class="summary-row">
-            <span>Subtotal:</span>
+            <span>Subtotal</span>
             <span id="subtotal">$0.00</span>
           </div>
           <div class="summary-row">
-            <span>Delivery:</span>
+            <span>Delivery</span>
             <span id="delivery">$0.00</span>
           </div>
           <div class="divider"></div>
           <div class="summary-row total">
-            <span>Total:</span>
+            <span>Total</span>
             <span id="total">$0.00</span>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
 
-    <script type="module" src="/assets/js/app.js?v=4"></script>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>
+            © 2026 Hajari — حجري. A premium stone atelier for curated materials
+            and elevated project execution.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js?v=8"></script>
     <script type="module" src="/assets/js/pages/checkout.js"></script>
   </body>
 </html>

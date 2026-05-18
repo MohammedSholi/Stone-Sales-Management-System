@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders Tab UI Demo - SSMS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=13" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=6" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
+    <script src="/assets/js/theme.js"></script>
+
+    <style>
+      /* Demo-specific styles */
+      body {
+        padding: 2rem;
+      }
+
+      .demo-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .demo-section {
+        background: var(--color-surface);
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow-md);
+      }
+
+      .demo-title {
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: 1.5rem;
+        color: var(--color-primary);
+      }
+
+      .demo-description {
+        color: var(--color-text-muted);
+        margin-bottom: 1.5rem;
+        font-size: var(--font-size-sm);
+      }
+
+      .code-block {
+        background: var(--color-background);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        overflow-x: auto;
+        font-size: var(--font-size-xs);
+        color: var(--color-text-main);
+        border: 1px solid var(--color-border);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <h1 style="text-align: center; margin-bottom: 3rem">
+        My Orders - Tab UI Demo
+      </h1>
+
+      <!-- Before -->
+      <div class="demo-section">
+        <div class="demo-title">✨ Improved Tab Styling</div>
+        <p class="demo-description">
+          The order status tabs now feature enhanced visual design with:
+        </p>
+        <ul style="margin-bottom: 1.5rem; color: var(--color-text-muted)">
+          <li>✓ Pill-shaped buttons with rounded corners</li>
+          <li>✓ Gradient background for active state</li>
+          <li>✓ Smooth hover effects with elevation</li>
+          <li>✓ Better color contrast and visual hierarchy</li>
+          <li>✓ Shadow effects for depth perception</li>
+          <li>✓ Responsive design for mobile devices</li>
+          <li>✓ Dark mode compatibility</li>
+        </ul>
+
+        <h3 style="font-size: var(--font-size-lg); margin-bottom: 1rem">
+          Active Tab Style Preview
+        </h3>
+        <div class="tabs mb-xl">
+          <button class="tab-btn active" data-tab="all">All</button>
+          <button class="tab-btn" data-tab="pending">Pending</button>
+          <button class="tab-btn" data-tab="in-progress">In Progress</button>
+          <button class="tab-btn" data-tab="completed">Completed</button>
+          <button class="tab-btn" data-tab="canceled">Canceled</button>
+        </div>
+
+        <h3 style="font-size: var(--font-size-lg); margin-bottom: 1rem">
+          Try Hovering and Clicking
+        </h3>
+        <div class="tabs mb-xl">
+          <button class="tab-btn" data-tab="all">All Orders</button>
+          <button class="tab-btn" data-tab="pending">Pending</button>
+          <button class="tab-btn" data-tab="in-progress">In Progress</button>
+          <button class="tab-btn" data-tab="completed">Completed</button>
+          <button class="tab-btn" data-tab="canceled">Canceled</button>
+        </div>
+
+        <h3 style="font-size: var(--font-size-lg); margin-bottom: 1rem">
+          CSS Features
+        </h3>
+        <div class="code-block">
+          .tabs {<br />
+          &nbsp;&nbsp;display: flex;<br />
+          &nbsp;&nbsp;gap: 0.55rem;<br />
+          &nbsp;&nbsp;padding: 0.75rem;<br />
+          &nbsp;&nbsp;border-radius: var(--radius-xl);<br />
+          &nbsp;&nbsp;background: linear-gradient(135deg, ...);<br />
+          &nbsp;&nbsp;border: 1px solid var(--color-border);<br />
+          &nbsp;&nbsp;box-shadow: var(--shadow-sm);<br />
+          }<br />
+          <br />
+          .tab-btn.active {<br />
+          &nbsp;&nbsp;color: white;<br />
+          &nbsp;&nbsp;background: linear-gradient(135deg, #b07a3e, #996633);<br />
+          &nbsp;&nbsp;border-color: var(--color-accent);<br />
+          &nbsp;&nbsp;box-shadow: 0 8px 20px rgba(176, 122, 62, 0.3);<br />
+          &nbsp;&nbsp;font-weight: bold;<br />
+          }
+        </div>
+      </div>
+
+      <!-- Information -->
+      <div class="demo-section">
+        <div class="demo-title">📝 Implementation Details</div>
+
+        <h3 style="font-size: var(--font-size-base); margin-bottom: 0.5rem">
+          File: <code style="color: var(--color-accent)">dashboard.css</code>
+        </h3>
+        <p
+          style="
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            font-size: var(--font-size-sm);
+          "
+        >
+          Added enhanced tab styling with modern design patterns. The styling
+          includes:
+        </p>
+
+        <ul
+          style="
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            margin-bottom: 1rem;
+          "
+        >
+          <li>
+            <strong>Container styling:</strong> Flexible layout with gradient
+            background and border
+          </li>
+          <li>
+            <strong>Button styling:</strong> Pill-shaped buttons with smooth
+            transitions
+          </li>
+          <li>
+            <strong>Active state:</strong> Gradient background with shadow
+            effect
+          </li>
+          <li>
+            <strong>Hover state:</strong> Color shift with subtle elevation
+            effect
+          </li>
+          <li>
+            <strong>Dark mode:</strong> Automatic color adjustments for dark
+            theme
+          </li>
+          <li>
+            <strong>Responsive:</strong> Adjusts padding and font size on
+            smaller screens
+          </li>
+        </ul>
+
+        <h3 style="font-size: var(--font-size-base); margin-bottom: 0.5rem">
+          Browser Support
+        </h3>
+        <p
+          style="color: var(--color-text-muted); font-size: var(--font-size-sm)"
+        >
+          ✓ Chrome/Edge (Modern)<br />
+          ✓ Firefox (Modern)<br />
+          ✓ Safari (Modern)<br />
+          ✓ Mobile Browsers
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Demo tab switching functionality
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const parent = btn.closest(".tabs");
+          parent
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

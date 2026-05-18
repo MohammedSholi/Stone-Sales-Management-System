@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - Hajari</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=4" />
+    <link rel="stylesheet" href="/assets/css/layout.css?v=13" />
+    <link rel="stylesheet" href="/assets/css/pages/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/pages/customer-account.css?v=1" />
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css?v=6" />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/9920/9920984.png"
+    />
+    <script src="/assets/js/theme.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="/index.php" class="navbar-brand">
+          <img
+            src="/assets/img/logo-hajari.svg"
+            alt="Hajari"
+            class="navbar-logo"
+          />
+          <span>Hajari / حجري</span>
+        </a>
+        <div class="navbar-center"><div class="navbar-nav"></div></div>
+        <div class="navbar-right">
+          <div class="navbar-actions-utilities"></div>
+          <div class="theme-toggle">
+            <input
+              type="checkbox"
+              id="darkModeToggle"
+              class="theme-toggle__input"
+              aria-label="Toggle dark mode"
+            />
+            <label for="darkModeToggle" class="theme-toggle__label">
+              <span class="theme-toggle__sky"></span>
+              <span class="theme-toggle__sun"></span>
+              <span class="theme-toggle__moon"></span>
+              <div class="theme-toggle__stars">
+                <span class="theme-toggle__star theme-toggle__star--1"></span
+                ><span class="theme-toggle__star theme-toggle__star--2"></span
+                ><span class="theme-toggle__star theme-toggle__star--3"></span
+                ><span class="theme-toggle__star theme-toggle__star--4"></span
+                ><span class="theme-toggle__star theme-toggle__star--5"></span>
+              </div>
+              <span class="theme-toggle__cloud theme-toggle__cloud--1"></span>
+              <span class="theme-toggle__cloud theme-toggle__cloud--2"></span>
+              <div class="theme-toggle__hills">
+                <span class="theme-toggle__hill theme-toggle__hill--1"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--3"></span
+                ><span class="theme-toggle__hill theme-toggle__hill--2"></span
+                ><span class="theme-toggle__tree"
+                  ><div class="theme-toggle__tree-top"></div>
+                  <div class="theme-toggle__tree-trunk"></div
+                ></span>
+              </div>
+              <span class="theme-toggle__knob"></span>
+            </label>
+          </div>
+          <div class="navbar-actions-auth"></div>
+          <button class="navbar-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-nav"></div>
+        <div class="navbar-actions-mobile"></div>
+      </div>
+    </nav>
+
+    <main class="container account-page">
+      <div class="breadcrumb">
+        <a href="/customer/dashboard.html">Dashboard</a>
+        <span class="breadcrumb-divider">/</span>
+        <span>My Profile</span>
+      </div>
+
+      <section class="card account-hero">
+        <div class="account-hero__left">
+          <div class="account-avatar" id="profileAvatar">HJ</div>
+          <div>
+            <span class="account-kicker">Customer Profile</span>
+            <h1 class="account-title" id="profileTitle">Loading profile...</h1>
+            <p class="account-subtitle" id="profileSubtitle">
+              Fetching your account details.
+            </p>
+            <div class="account-meta" id="profileMeta"></div>
+          </div>
+        </div>
+        <div class="account-hero__actions">
+          <span class="badge badge-primary badge-lg" id="profileStatusBadge"
+            >Active</span
+          >
+          <span class="badge badge-secondary badge-lg" id="profileTierBadge"
+            >Verified</span
+          >
+          <form
+            id="avatarForm"
+            class="account-actions-row"
+            enctype="multipart/form-data"
+          >
+            <input
+              class="form-input"
+              id="avatarInput"
+              name="avatar"
+              type="file"
+              accept="image/png,image/jpeg,image/webp"
+            />
+            <button type="submit" class="btn btn-secondary btn-sm">
+              Upload Photo
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <div class="account-grid">
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Personal Information</h2>
+              <p>Edit the details customers see on your account.</p>
+            </div>
+          </div>
+          <form id="profileForm" class="account-section">
+            <div class="account-form-grid">
+              <div>
+                <label class="account-field-label" for="firstName"
+                  >First Name</label
+                >
+                <input
+                  class="form-input"
+                  id="firstName"
+                  name="first_name"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label class="account-field-label" for="lastName"
+                  >Last Name</label
+                >
+                <input
+                  class="form-input"
+                  id="lastName"
+                  name="last_name"
+                  type="text"
+                />
+              </div>
+              <div class="account-field--full">
+                <label class="account-field-label" for="profileEmail"
+                  >Email</label
+                >
+                <input
+                  class="form-input"
+                  id="profileEmail"
+                  name="email"
+                  type="email"
+                />
+              </div>
+              <div>
+                <label class="account-field-label" for="profilePhone"
+                  >Phone</label
+                >
+                <input
+                  class="form-input"
+                  id="profilePhone"
+                  name="phone"
+                  type="tel"
+                />
+              </div>
+              <div>
+                <label class="account-field-label" for="profileCity"
+                  >City</label
+                >
+                <input
+                  class="form-input"
+                  id="profileCity"
+                  name="city"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label class="account-field-label" for="profileCountry"
+                  >Country</label
+                >
+                <input
+                  class="form-input"
+                  id="profileCountry"
+                  name="country"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label class="account-field-label" for="profilePostalCode"
+                  >ZIP / Postal Code</label
+                >
+                <input
+                  class="form-input"
+                  id="profilePostalCode"
+                  name="postal_code"
+                  type="text"
+                />
+              </div>
+              <div class="account-field--full">
+                <label class="account-field-label" for="profileAddress"
+                  >Address</label
+                >
+                <textarea
+                  class="form-textarea"
+                  id="profileAddress"
+                  name="address"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div class="account-card__footer">
+              <p class="mini-muted">
+                Changes will update your account details immediately.
+              </p>
+              <button type="submit" class="btn btn-primary">
+                Save Profile
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Account Statistics</h2>
+              <p>Live counts based on your order and review history.</p>
+            </div>
+          </div>
+          <div class="account-stat-grid" id="profileStats"></div>
+        </section>
+
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Change Password</h2>
+              <p>Use a strong password to keep the account secure.</p>
+            </div>
+          </div>
+          <form id="passwordForm" class="account-section">
+            <div>
+              <label class="account-field-label" for="currentPassword"
+                >Current Password</label
+              >
+              <div class="password-wrapper">
+                <input
+                  class="form-input"
+                  id="currentPassword"
+                  name="current_password"
+                  type="password"
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="currentPassword"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                  title="Show password"
+                >
+                  <svg
+                    class="icon-show"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <svg
+                    class="icon-hide"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                    ></path>
+                    <path
+                      d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                    ></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="account-form-grid">
+              <div>
+                <label class="account-field-label" for="newPassword"
+                  >New Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="newPassword"
+                    name="new_password"
+                    type="password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="newPassword"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                    title="Show password"
+                  >
+                    <svg
+                      class="icon-show"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <svg
+                      class="icon-hide"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                      ></path>
+                      <path
+                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                      ></path>
+                      <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="account-field-label" for="confirmPassword"
+                  >Confirm Password</label
+                >
+                <div class="password-wrapper">
+                  <input
+                    class="form-input"
+                    id="confirmPassword"
+                    name="confirm_password"
+                    type="password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle"
+                    data-target="confirmPassword"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                    title="Show password"
+                  >
+                    <svg
+                      class="icon-show"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                      ></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <svg
+                      class="icon-hide"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                      ></path>
+                      <path
+                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                      ></path>
+                      <line x1="1" y1="1" x2="23" y2="23"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="account-card__footer">
+              <p class="mini-muted">
+                Password changes are validated against your current password.
+              </p>
+              <button type="submit" class="btn btn-secondary">
+                Update Password
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card account-card account-card--half">
+          <div class="account-card__header">
+            <div>
+              <h2>Recent Orders</h2>
+              <p>Your latest purchases with quick access to order details.</p>
+            </div>
+          </div>
+          <div class="table-container account-table-container">
+            <table class="table account-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Hajari / حجري</h4>
+            <p class="footer-description">
+              A premium stone atelier for curated materials, design-led
+              sourcing, and elevated project execution rooted in Palestine and
+              global design.
+            </p>
+          </div>
+          <div class="footer-section">
+            <a href="/about.html" class="footer-link">About</a>
+            <a href="/customer/custom-request.html" class="footer-link"
+              >Custom Request</a
+            >
+            <a href="/customer/profile.html" class="footer-link">My Profile</a>
+          </div>
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <div class="footer-links">
+              <span class="footer-link">+972 59-394-3350</span>
+              <span class="footer-link">info@hajari-stone.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/assets/js/app.js?v=7"></script>
+    <script
+      type="module"
+      src="/assets/js/pages/customer-profile.js?v=1"
+    ></script>
+  </body>
+</html>

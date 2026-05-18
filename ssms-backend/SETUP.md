@@ -53,7 +53,10 @@ Should see:
 
 - **Username**: `admin`
 - **Email**: `admin@ssms.com`
-- **Password**: `password`
+- **Password**: `Admin123!`
+
+> If you need to reset or recreate the admin password, open:
+> `http://localhost/ssms-backend/public/seed_admin.php`
 
 ### Employee Account
 

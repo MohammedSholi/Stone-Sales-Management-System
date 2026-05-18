@@ -5,6 +5,7 @@
 import { StonesAPI } from "../data/api-mock.js";
 import { initTiltCards } from "../ui/tilt.js";
 import LoadingSkeletons from "../ui/loader.js";
+import { refreshRevealObservers } from "../ui/motion.js";
 import { formatCurrency } from "../app.js";
 
 // Load and display best sellers
@@ -28,6 +29,7 @@ async function loadBestSellers() {
 
     // Initialize tilt effect on product cards
     initTiltCards();
+    refreshRevealObservers();
   } catch (error) {
     console.error("Error loading bestsellers:", error);
     grid.innerHTML =
@@ -84,32 +86,9 @@ function initSmoothScroll() {
   });
 }
 
-// Add scroll-based animations
-function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate-slideUp");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe all sections
-  document.querySelectorAll(".section").forEach((section) => {
-    observer.observe(section);
-  });
-}
-
 // Initialize page
 document.addEventListener("DOMContentLoaded", () => {
   loadBestSellers();
   initTiltCards();
   initSmoothScroll();
-  initScrollAnimations();
 });

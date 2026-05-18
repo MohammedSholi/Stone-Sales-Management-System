@@ -4,11 +4,16 @@
  * Handles user registration, login, logout
  */
 
+require_once __DIR__ . '/../models/CustomerAccountModel.php';
+
 class AuthController {
     private $userModel;
+    private $customerAccountModel;
     
     public function __construct() {
         $this->userModel = new UserModel();
+        $modelClass = 'CustomerAccountModel';
+        $this->customerAccountModel = new $modelClass();
     }
     
     public function register() {
@@ -79,6 +84,11 @@ class AuthController {
             $_SESSION['full_name']   = $user['full_name'];
             $_SESSION['role']        = $user['role'];
             $_SESSION['customer_id'] = $user['customer_id'];
+            $_SESSION['session_id']  = session_id();
+
+            if (!empty($user['customer_id'])) {
+                $this->customerAccountModel->recordLoginSession($user['user_id']);
+            }
 
             Logger::debug('AuthController::register - Session set', [
                 'session_id' => session_id()
@@ -107,11 +117,19 @@ class AuthController {
             Validator::sanitize($data['username']),
             $data['password']
         );
+
+        $_SESSION['session_id'] = session_id();
+        if (!empty($user['customer_id'])) {
+            $this->customerAccountModel->recordLoginSession($user['user_id']);
+        }
         
         jsonResponse($user, 'Login successful');
     }
     
     public function logout() {
+        if (!empty($_SESSION['user_id']) && ($_SESSION['role'] ?? '') === 'Customer') {
+            $this->customerAccountModel->revokeCurrentSession($_SESSION['user_id'], $_SESSION['session_id'] ?? session_id());
+        }
         session_destroy();
         jsonResponse(null, 'Logout successful');
     }

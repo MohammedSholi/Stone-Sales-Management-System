@@ -259,8 +259,9 @@ function showError(elementId, message) {
   const errorElement = document.getElementById(elementId);
   if (errorElement) {
     errorElement.textContent = message;
-    const input = errorElement.previousElementSibling;
-    if (input && input.classList.contains("form-input")) {
+    const group = errorElement.closest(".form-group");
+    const input = group ? group.querySelector(".form-input") : null;
+    if (input) {
       input.classList.add("error");
     }
   }
@@ -283,6 +284,48 @@ document.querySelectorAll(".form-input").forEach((input) => {
     if (errorElement) {
       errorElement.textContent = "";
       this.classList.remove("error");
+    }
+  });
+});
+
+// Password visibility toggle
+document.querySelectorAll(".password-toggle").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = btn.getAttribute("data-target");
+    if (!targetId) return;
+
+    const input = document.getElementById(targetId);
+    if (!input) return;
+
+    const currentlyActive =
+      btn.classList.contains("is-active") ||
+      btn.classList.contains("is-visible");
+    const makeVisible = !currentlyActive;
+
+    input.type = makeVisible ? "text" : "password";
+    btn.setAttribute(
+      "aria-label",
+      makeVisible ? "Hide password" : "Show password",
+    );
+    btn.setAttribute("aria-pressed", makeVisible ? "true" : "false");
+    btn.setAttribute("title", makeVisible ? "Hide password" : "Show password");
+
+    btn.classList.toggle("is-active", makeVisible);
+    btn.classList.toggle("is-visible", makeVisible);
+
+    const showIcon = btn.querySelector(".icon-show");
+    const hideIcon = btn.querySelector(".icon-hide");
+    if (showIcon) showIcon.hidden = !!makeVisible;
+    if (hideIcon) hideIcon.hidden = !makeVisible;
+
+    // Keep focus on the input and move caret to end
+    try {
+      input.focus();
+      const len = input.value ? input.value.length : 0;
+      input.setSelectionRange(len, len);
+    } catch (err) {
+      // ignore
     }
   });
 });

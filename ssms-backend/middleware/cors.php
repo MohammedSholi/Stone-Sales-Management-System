@@ -12,16 +12,30 @@ $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 $allowedOrigins = [
     'http://localhost',
     'http://127.0.0.1',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://localhost:8001',
+    'http://127.0.0.1:8001',
     'http://localhost:5500',
     'http://127.0.0.1:5500',
     'http://localhost:3000',
     'http://localhost:8080',
 ];
 
-if (in_array($origin, $allowedOrigins)) {
+if (
+    $origin &&
+    (
+        str_starts_with($origin, 'http://localhost') ||
+        str_starts_with($origin, 'https://localhost') ||
+        str_starts_with($origin, 'http://127.0.0.1') ||
+        str_starts_with($origin, 'https://127.0.0.1')
+    )
+) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+} elseif (in_array($origin, $allowedOrigins, true)) {
     header('Access-Control-Allow-Origin: ' . $origin);
 } else {
-    // For same-origin requests $origin is often empty – echo the first allowed
+    // For same-origin requests $origin is often empty – echo a safe localhost default
     header('Access-Control-Allow-Origin: http://localhost');
 }
 

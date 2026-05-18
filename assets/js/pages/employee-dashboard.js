@@ -1,9 +1,40 @@
 /* Employee Dashboard JavaScript */
 
-import { OrderStorage, UserSession } from "../storage.js";
+import { UserSession } from "../storage.js";
+import { apiCall } from "../api.js";
 import { formatCurrency, formatDate } from "../app.js";
+import toast from "../ui/toast.js";
+import { createPageTranslator } from "../ui/page-translator.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+const translator = createPageTranslator({
+  en: {
+    employeeDashboardHeading: "Employee Dashboard",
+    dashboardSubtitle: "Manage assigned orders",
+    assignedOrdersLabel: "Assigned Orders",
+    inProgressOrdersLabel: "In Progress",
+    completedTodayLabel: "Completed Today",
+    totalCompletedLabel: "Total Completed",
+    assignedOrdersHeading: "My Assigned Orders",
+    manageAllOrders: "Manage All Orders",
+    noOrdersText: "No orders assigned yet.",
+    manageButton: "Manage"
+  },
+  ar: {
+    employeeDashboardHeading: "لوحة الموظف",
+    dashboardSubtitle: "إدارة الطلبات الموكلة",
+    assignedOrdersLabel: "الطلبات الموكلة",
+    inProgressOrdersLabel: "قيد التنفيذ",
+    completedTodayLabel: "مكتملة اليوم",
+    totalCompletedLabel: "مجموع المكتمل",
+    assignedOrdersHeading: "الطلبات الموكلة لي",
+    manageAllOrders: "إدارة جميع الطلبات",
+    noOrdersText: "لا توجد طلبات موكلة بعد.",
+    manageButton: "إدارة"
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  translator.translate();
   if (
     !UserSession.isLoggedIn() ||
     (UserSession.getRole() || "").toLowerCase() !== "employee"
@@ -12,29 +43,39 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  loadDashboardData();
+  const sessionValid = await validateBackendSession();
+  if (!sessionValid) {
+    UserSession.logout();
+    window.location.href = "/auth/login.html";
+    return;
+  }
+
+  await loadDashboardData();
 });
 
-function loadDashboardData() {
-  const orders = OrderStorage.getOrders();
-  const user = UserSession.getUser();
+async function loadDashboardData() {
+  const response = await apiCall("/employee/orders");
+  if (!response.success) {
+    toast.error(response.error?.message || "Failed to load employee orders");
+    renderOrders([]);
+    return;
+  }
 
-  // Filter orders assigned to current employee
-  const myOrders = orders.filter((o) => o.assignedTo === user.id);
+  const myOrders = Array.isArray(response.data) ? response.data : [];
 
-  const assignedOrders = myOrders.filter((o) => o.status === "Assigned").length;
+  const assignedOrders = myOrders.filter((o) => getOrderStatus(o) === "Assigned").length;
   const inProgressOrders = myOrders.filter(
-    (o) => o.status === "In Progress",
+    (o) => getOrderStatus(o) === "In Progress",
   ).length;
   const completedOrders = myOrders.filter(
-    (o) => o.status === "Completed" || o.status === "Delivered",
+    (o) => ["Completed", "Delivered"].includes(getOrderStatus(o)),
   );
 
   // Calculate completed today
   const today = new Date().toDateString();
   const completedToday = completedOrders.filter((o) => {
-    const lastUpdate = o.timeline?.[o.timeline.length - 1]?.date;
-    return lastUpdate && new Date(lastUpdate).toDateString() === today;
+    const dateValue = o.updated_at || o.order_date || o.created_at;
+    return dateValue && new Date(dateValue).toDateString() === today;
   }).length;
 
   document.getElementById("assignedOrders").textContent = assignedOrders;
@@ -48,11 +89,13 @@ function loadDashboardData() {
 
 function renderOrders(orders) {
   const container = document.getElementById("ordersContainer");
-
   if (orders.length === 0) {
-    container.innerHTML = '<p class="text-muted">No orders assigned yet.</p>';
+    container.innerHTML = `<p class="text-muted">${translator.getText("noOrdersText")}</p>`;
     return;
   }
+
+  const lang = translator.getLanguage();
+  const manageText = translator.getText("manageButton");
 
   container.innerHTML = orders
     .map(
@@ -60,22 +103,36 @@ function renderOrders(orders) {
     <div class="order-card">
       <div class="order-header">
         <div>
-          <div class="order-id">${order.id}</div>
-          <div class="order-date">${formatDate(order.createdAt)}</div>
+          <div class="order-id">${lang === "ar" ? "#" : "#"}${order.order_id}</div>
+          <div class="order-date">${formatDate(order.order_date || order.created_at)}</div>
         </div>
-        <span class="badge badge-${getStatusBadgeClass(order.status)}">${order.status}</span>
+        <span class="badge badge-${getStatusBadgeClass(getOrderStatus(order))}">${getOrderStatus(order)}</span>
       </div>
       <div class="mb-md">
-        <div class="text-muted mb-xs">Customer: ${order.customerName}</div>
-        <div class="text-muted">${order.items.length} item(s) • ${formatCurrency(order.total)}</div>
+        <div class="text-muted mb-xs">${lang === "ar" ? "العميل:" : "Customer:"} ${order.customer_name || (lang === "ar" ? "عميل" : "Customer")}</div>
+        <div class="text-muted">${order.item_count || 0} ${lang === "ar" ? "عنصر" : "item(s)"} • ${formatCurrency(parseFloat(order.total_amount || 0))}</div>
       </div>
       <div class="flex gap-md">
-        <a href="/employee/order-manage.html?id=${order.id}" class="btn btn-primary btn-sm">Manage</a>
+        <a href="/employee/order-manage.html?id=${order.order_id}" class="btn btn-primary btn-sm">${manageText}</a>
       </div>
     </div>
   `,
     )
     .join("");
+}
+
+function getOrderStatus(order) {
+  return order.order_status || order.status || "Pending";
+}
+
+async function validateBackendSession() {
+  try {
+    const response = await apiCall("/auth/me");
+    return response && (response.data || response.user_id);
+  } catch (err) {
+    console.error("Session validation error:", err);
+    return false;
+  }
 }
 
 function getStatusBadgeClass(status) {

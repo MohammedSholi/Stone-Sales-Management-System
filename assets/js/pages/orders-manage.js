@@ -6,6 +6,7 @@ import { formatCurrency, formatDate } from "../app.js";
 import toast from "../ui/toast.js";
 
 let orders = [];
+let employees = [];
 let currentTab = "all";
 let focusedOrderId = null;
 let focusedOrderDetails = null;
@@ -46,8 +47,18 @@ async function loadOrders() {
 
   renderOverview();
   renderOrders();
-  await loadFocusedOrderDetails();
+  await Promise.all([loadEmployees(), loadFocusedOrderDetails()]);
   renderFocusedOrder();
+}
+
+async function loadEmployees() {
+  const response = await apiCall("/admin/users?role=Employee&status=Active");
+  if (!response.success) {
+    employees = [];
+    return;
+  }
+
+  employees = Array.isArray(response.data) ? response.data : [];
 }
 
 async function loadFocusedOrderDetails() {
@@ -116,6 +127,7 @@ function renderOrders() {
       const customer = order.customer_name || order.customerName || "Customer";
       const dateValue = order.order_date || order.created_at || order.createdAt;
       const assigned = order.employee_name || "Unassigned";
+      const isUnassigned = !order.employee_id;
 
       return `
       <tr>
@@ -128,6 +140,11 @@ function renderOrders() {
         <td>
           <div class="orders-actions">
             <a href="/admin/orders-manage.html?id=${orderId}" class="btn btn-primary btn-sm">View Details</a>
+            ${
+              isUnassigned
+                ? `<a href="/admin/orders-manage.html?id=${orderId}" class="btn btn-outline btn-sm">Assign Employee</a>`
+                : ""
+            }
           </div>
         </td>
       </tr>
@@ -191,8 +208,10 @@ function renderFocusedOrder() {
     fullOrder.customer_phone || fullOrder.customerPhone || "-";
   const address =
     fullOrder.customer_address || fullOrder.deliveryAddress || "-";
+  const assignedEmployeeId = fullOrder.employee_id ?? order.employee_id ?? null;
   const assigned =
     order.employee_name || fullOrder.employee_name || "Unassigned";
+  const canAssignEmployee = !assignedEmployeeId;
 
   section.hidden = false;
   container.innerHTML = `
@@ -264,6 +283,32 @@ function renderFocusedOrder() {
           </div>
           <button id="saveOrderStatusBtn" class="btn btn-accent w-full" data-order-id="${orderId}">Save Status</button>
           <p class="focused-order-note">This updates workflow immediately for admin and employee dashboards.</p>
+
+          <div class="focused-order-assign">
+            <h3>Assign Employee</h3>
+            ${
+              canAssignEmployee
+                ? `
+                  <div class="form-group">
+                    <label for="adminOrderEmployee" class="form-label">Available Employees</label>
+                    <select id="adminOrderEmployee" class="form-input">
+                      ${renderEmployeeOptions()}
+                    </select>
+                  </div>
+                  <button id="assignOrderBtn" class="btn btn-outline w-full" data-order-id="${orderId}" ${
+                    employees.length === 0 ? "disabled" : ""
+                  }>Assign to Employee</button>
+                  <p class="focused-order-note">Only unassigned orders can be assigned from this panel.</p>
+                `
+                : `
+                  <div class="order-info-item">
+                    <span class="order-info-label">Current Employee</span>
+                    <p class="order-info-value">${assigned}</p>
+                  </div>
+                  <p class="focused-order-note">This order already has an employee assigned.</p>
+                `
+            }
+          </div>
         </aside>
       </div>
     </article>
@@ -280,6 +325,50 @@ function renderFocusedOrder() {
       await updateOrderStatus(orderId, selectedStatus);
     });
   }
+
+  const assignBtn = document.getElementById("assignOrderBtn");
+  if (assignBtn) {
+    assignBtn.addEventListener("click", async () => {
+      const selectedEmployeeId =
+        document.getElementById("adminOrderEmployee")?.value;
+      if (!selectedEmployeeId) {
+        toast.error("Please select an employee");
+        return;
+      }
+
+      await assignOrderToEmployee(orderId, selectedEmployeeId);
+    });
+  }
+}
+
+function renderEmployeeOptions() {
+  if (!employees.length) {
+    return '<option value="">No active employees available</option>';
+  }
+
+  return [
+    '<option value="">Select an employee</option>',
+    ...employees.map((employee) => {
+      const employeeId = employee.employee_id ?? employee.id;
+      const name =
+        employee.full_name || employee.username || `Employee #${employeeId}`;
+      return `<option value="${employeeId}">${name}</option>`;
+    }),
+  ].join("");
+}
+
+async function assignOrderToEmployee(orderId, employeeId) {
+  const response = await apiCall(`/admin/orders/${orderId}/assign`, "PUT", {
+    employee_id: employeeId,
+  });
+
+  if (!response.success) {
+    toast.error(response.error?.message || "Failed to assign employee");
+    return;
+  }
+
+  toast.success("Employee assigned successfully");
+  await loadOrders();
 }
 
 function renderItemRows(items) {

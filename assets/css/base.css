@@ -5,29 +5,41 @@
 
 /* ========== CSS VARIABLES ========== */
 :root {
-  /* Color Palette - Stone Architecture Theme */
-  --color-primary: #1f2328;
-  --color-secondary: #d8c3a5;
-  --color-accent: #b07a3e;
-  --color-background: #f7f5f2;
-  --color-surface: #ffffff;
-  --color-success: #2e7d32;
-  --color-warning: #ed6c02;
-  --color-danger: #d32f2f;
-  --color-text-main: #111827;
-  --color-text-muted: #6b7280;
+  /* Color Palette — refined stone / gallery light theme */
+  --color-primary: #12151c;
+  --color-secondary: #d4c4a8;
+  --color-accent: #a86b2e;
+  --color-accent-bright: #c4894a;
+  --color-background: #f4f2ee;
+  --color-surface: rgba(255, 255, 255, 0.92);
+  --color-success: #1b6e3a;
+  --color-warning: #c45f00;
+  --color-danger: #c62828;
+  --color-text-main: #161922;
+  --color-text-muted: #5c6370;
 
   /* Semantic Colors */
-  --color-border: #e5e7eb;
-  --color-hover: #f3f4f6;
-  --color-shadow: rgba(0, 0, 0, 0.1);
-  --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-border: rgba(20, 24, 32, 0.09);
+  --color-hover: rgba(20, 24, 32, 0.045);
+  --color-shadow: rgba(15, 23, 42, 0.09);
+  --color-overlay: rgba(12, 14, 18, 0.52);
+
+  /* Glass / frost (light) */
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-border-outer: rgba(15, 23, 42, 0.07);
+  --glass-shadow:
+    0 4px 24px rgba(15, 23, 42, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+  --glow-accent: 0 0 0 1px rgba(168, 107, 46, 0.12),
+    0 20px 50px rgba(168, 107, 46, 0.12);
 
   /* Button contrast — text color on accent bg */
   --color-accent-contrast: #ffffff;
   /* Navbar */
-  --navbar-bg: rgba(255, 255, 255, 0.85);
-  --navbar-border: rgba(0, 0, 0, 0.06);
+  --navbar-bg: rgba(255, 255, 255, 0.72);
+  --navbar-border: rgba(15, 23, 42, 0.06);
 
   /* Spacing Scale */
   --spacing-xs: 0.25rem;
@@ -39,10 +51,14 @@
   --spacing-3xl: 4rem;
   --spacing-4xl: 6rem;
 
-  /* Typography */
+  /* Typography — editorial + precision UI */
   --font-primary:
-    "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "Playfair Display", serif;
+    "Outfit", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-heading:
+    "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman",
+    serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -80,10 +96,14 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   /* Transitions */
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
+  --transition-fast: 160ms var(--ease-out-expo);
+  --transition-base: 280ms var(--ease-out-expo);
+  --transition-slow: 420ms var(--ease-out-expo);
 
   /* Layout */
   --max-width-container: 1280px;
@@ -110,9 +130,14 @@
 
 html {
   font-size: 16px;
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+}
+
+html.dark-mode {
+  color-scheme: dark;
 }
 
 body {
@@ -120,8 +145,21 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
+  letter-spacing: 0.01em;
   color: var(--color-text-main);
   background-color: var(--color-background);
+  background-image:
+    radial-gradient(
+      ellipse 120% 80% at 50% -30%,
+      rgba(212, 196, 168, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 100% 0%,
+      rgba(255, 255, 255, 0.5),
+      transparent 45%
+    );
+  background-attachment: fixed;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -134,10 +172,11 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: var(--font-weight-bold);
+  font-weight: 600;
   line-height: var(--line-height-tight);
   color: var(--color-primary);
   margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -202,7 +241,8 @@ button {
 /* Focus Styles for Accessibility */
 :focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ========== UTILITY CLASSES ========== */
@@ -556,6 +596,72 @@ button {
   border-width: 0;
 }
 
+/* ========== SCROLLBARS (light) ========== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(20, 24, 32, 0.22) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(20, 24, 32, 0.18);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(20, 24, 32, 0.32);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ========== THEME CROSSFADE (JS adds .ssms-theme-transition on <html>) ========== */
+html.ssms-theme-transition :where(body, .navbar, .footer, .card, .product-card, .stat-card, .modal, .toast, .form-input, .form-select, .form-textarea, .table-container, .navbar-dropdown, .category-card, .feature-card, .testimonial-card, .auth-box, .parallax-hero__content, .prestige-strip) {
+  transition-property: background-color, color, border-color, box-shadow, fill;
+  transition-duration: 0.42s !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ========== SCROLL REVEAL (see assets/js/ui/motion.js) ========== */
+@keyframes ssms-reveal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.99);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.ssms-revealed {
+  animation: ssms-reveal-in 0.62s var(--ease-out-expo) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ssms-revealed {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  html.ssms-theme-transition :where(body, .navbar, .footer, .card, .product-card, .stat-card, .modal, .toast, .form-input, .form-select, .form-textarea, .table-container, .navbar-dropdown, .category-card, .feature-card, .testimonial-card, .auth-box, .parallax-hero__content, .prestige-strip) {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ========== RESPONSIVE BREAKPOINTS ========== */
 @media (max-width: 1024px) {
   :root {
@@ -588,4 +694,34 @@ button {
   .grid-cols-4 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+}
+
+/* ========== DECORATIVE STONE SVG ASSETS ========== */
+img[src*="/assets/img/"][src*="marble"]:hover,
+img[src*="/assets/img/"][src*="granite"]:hover,
+img[src*="/assets/img/"][src*="travertine"]:hover {
+  transform: scale(1.04) rotate(0.6deg);
+  filter: saturate(1.12) contrast(1.04);
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    filter 0.5s var(--ease-out-expo);
+}
+
+img[src*="/assets/img/"][src*="marble"],
+img[src*="/assets/img/"][src*="granite"],
+img[src*="/assets/img/"][src*="travertine"] {
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    filter 0.5s var(--ease-out-expo);
+}
+
+/* ========== PREMIUM FINISH — selection polish ========== */
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  color: var(--color-primary);
+}
+
+html.dark-mode ::selection {
+  background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: #0c0e12;
 }

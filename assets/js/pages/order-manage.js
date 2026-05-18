@@ -1,12 +1,13 @@
 /* Employee Order Management JavaScript */
 
-import { OrderStorage, UserSession } from "../storage.js";
+import { UserSession } from "../storage.js";
+import { apiCall } from "../api.js";
 import { formatCurrency, formatDate } from "../app.js";
 import toast from "../ui/toast.js";
 
 let currentOrder = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   if (
     !UserSession.isLoggedIn() ||
     (UserSession.getRole() || "").toLowerCase() !== "employee"
@@ -18,17 +19,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const orderId = params.get("id");
 
+  const sessionValid = await validateBackendSession();
+  if (!sessionValid) {
+    UserSession.logout();
+    window.location.href = "/auth/login.html";
+    return;
+  }
+
   if (!orderId) {
-    renderAllOrders();
+    await renderAllOrders();
   } else {
-    renderOrderManagement(orderId);
+    await renderOrderManagement(orderId);
   }
 });
 
-function renderAllOrders() {
-  const orders = OrderStorage.getOrders();
-  const user = UserSession.getUser();
-  const myOrders = orders.filter((o) => o.assignedTo === user.id);
+async function renderAllOrders() {
+  const response = await apiCall("/employee/orders");
+  if (!response.success) {
+    toast.error(response.error?.message || "Failed to load orders");
+    document.getElementById("orderContent").innerHTML =
+      '<p class="text-muted">No orders available.</p>';
+    return;
+  }
+
+  const myOrders = Array.isArray(response.data) ? response.data : [];
 
   const html = `
     <h1 class="mb-xl">All My Orders</h1>
@@ -38,16 +52,16 @@ function renderAllOrders() {
       <div class="order-card">
         <div class="order-header">
           <div>
-            <div class="order-id">${order.id}</div>
-            <div class="order-date">${formatDate(order.createdAt)}</div>
+              <div class="order-id">#${order.order_id}</div>
+              <div class="order-date">${formatDate(order.order_date || order.created_at)}</div>
           </div>
-          <span class="badge badge-${getStatusBadgeClass(order.status)}">${order.status}</span>
+            <span class="badge badge-${getStatusBadgeClass(getOrderStatus(order))}">${getOrderStatus(order)}</span>
         </div>
         <div class="mb-md">
-          <div class="text-muted mb-xs">Customer: ${order.customerName}</div>
-          <div class="text-muted">${order.items.length} item(s) • ${formatCurrency(order.total)}</div>
+            <div class="text-muted mb-xs">Customer: ${order.customer_name || "Customer"}</div>
+            <div class="text-muted">${order.item_count || 0} item(s) • ${formatCurrency(parseFloat(order.total_amount || 0))}</div>
         </div>
-        <a href="/employee/order-manage.html?id=${order.id}" class="btn btn-primary btn-sm">Manage Order</a>
+          <a href="/employee/order-manage.html?id=${order.order_id}" class="btn btn-primary btn-sm">Manage Order</a>
       </div>
     `,
       )
@@ -57,8 +71,9 @@ function renderAllOrders() {
   document.getElementById("orderContent").innerHTML = html;
 }
 
-function renderOrderManagement(orderId) {
-  currentOrder = OrderStorage.getOrderById(orderId);
+async function renderOrderManagement(orderId) {
+  const response = await apiCall(`/orders/${orderId}`);
+  currentOrder = response.success ? response.data : null;
 
   if (!currentOrder) {
     toast.error("Order not found");
@@ -67,25 +82,25 @@ function renderOrderManagement(orderId) {
   }
 
   const html = `
-    <h1 class="mb-xl">${currentOrder.id}</h1>
+    <h1 class="mb-xl">#${currentOrder.order_id}</h1>
 
     <div class="grid grid-cols-2 gap-2xl mb-2xl">
       <div class="card">
         <h3 class="mb-lg">Customer Information</h3>
-        <div class="mb-md"><strong>Name:</strong> ${currentOrder.customerName}</div>
-        <div class="mb-md"><strong>Email:</strong> ${currentOrder.customerEmail}</div>
-        <div class="mb-md"><strong>Phone:</strong> ${currentOrder.customerPhone}</div>
-        <div><strong>Address:</strong> ${currentOrder.deliveryAddress}</div>
+        <div class="mb-md"><strong>Name:</strong> ${currentOrder.customer_name || "-"}</div>
+        <div class="mb-md"><strong>Email:</strong> ${currentOrder.customer_email || "-"}</div>
+        <div class="mb-md"><strong>Phone:</strong> ${currentOrder.customer_phone || "-"}</div>
+        <div><strong>Address:</strong> ${currentOrder.customer_address || "-"}</div>
       </div>
       
       <div class="card">
         <h3 class="mb-lg">Order Summary</h3>
         <div class="mb-lg">
-          <span class="badge badge-${getStatusBadgeClass(currentOrder.status)} badge-lg">${currentOrder.status}</span>
+          <span class="badge badge-${getStatusBadgeClass(getOrderStatus(currentOrder))} badge-lg">${getOrderStatus(currentOrder)}</span>
         </div>
         <div class="flex justify-between mb-sm">
           <span>Total:</span>
-          <strong class="text-accent">${formatCurrency(currentOrder.total)}</strong>
+          <strong class="text-accent">${formatCurrency(parseFloat(currentOrder.total_amount || 0))}</strong>
         </div>
       </div>
     </div>
@@ -103,14 +118,14 @@ function renderOrderManagement(orderId) {
             </tr>
           </thead>
           <tbody>
-            ${currentOrder.items
+            ${(currentOrder.items || [])
               .map(
                 (item) => `
               <tr>
-                <td>${item.name}</td>
-                <td>${formatCurrency(item.price)}</td>
-                <td>${item.quantity}</td>
-                <td>${formatCurrency(item.price * item.quantity)}</td>
+                <td>${item.name || `Stone #${item.stone_id}`}</td>
+                <td>${formatCurrency(parseFloat(item.unit_price || 0))}</td>
+                <td>${item.quantity_ordered || 0}</td>
+                <td>${formatCurrency(parseFloat(item.subtotal || 0))}</td>
               </tr>
             `,
               )
@@ -126,10 +141,10 @@ function renderOrderManagement(orderId) {
         <div class="form-group">
           <label for="newStatus" class="form-label">Change Status</label>
           <select id="newStatus" class="form-input">
-            <option value="Assigned" ${currentOrder.status === "Assigned" ? "selected" : ""}>Assigned</option>
-            <option value="In Progress" ${currentOrder.status === "In Progress" ? "selected" : ""}>In Progress</option>
-            <option value="Completed" ${currentOrder.status === "Completed" ? "selected" : ""}>Completed</option>
-            <option value="Delivered" ${currentOrder.status === "Delivered" ? "selected" : ""}>Delivered</option>
+            <option value="Assigned" ${getOrderStatus(currentOrder) === "Assigned" ? "selected" : ""}>Assigned</option>
+            <option value="In Progress" ${getOrderStatus(currentOrder) === "In Progress" ? "selected" : ""}>In Progress</option>
+            <option value="Completed" ${getOrderStatus(currentOrder) === "Completed" ? "selected" : ""}>Completed</option>
+            <option value="Delivered" ${getOrderStatus(currentOrder) === "Delivered" ? "selected" : ""}>Delivered</option>
           </select>
         </div>
         <div class="form-group">
@@ -141,7 +156,7 @@ function renderOrderManagement(orderId) {
     </div>
 
     ${
-      currentOrder.timeline
+      currentOrder.timeline && currentOrder.timeline.length
         ? `
       <div class="card">
         <h3 class="mb-lg">Order Timeline</h3>
@@ -174,17 +189,46 @@ function renderOrderManagement(orderId) {
     .addEventListener("submit", handleStatusUpdate);
 }
 
-function handleStatusUpdate(e) {
+async function handleStatusUpdate(e) {
   e.preventDefault();
 
   const newStatus = document.getElementById("newStatus").value;
-  const note = document.getElementById("statusNote").value.trim();
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  const originalText = submitBtn ? submitBtn.textContent : "Update Status";
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Updating...";
+  }
 
-  OrderStorage.updateOrderStatus(currentOrder.id, newStatus, note);
+  const response = await apiCall(`/orders/${currentOrder.order_id}/status`, "PUT", {
+    status: newStatus,
+  });
+
+  if (!response.success) {
+    toast.error(response.error?.message || "Failed to update order status");
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+    return;
+  }
 
   toast.success("Order status updated successfully");
+  setTimeout(() => window.location.reload(), 700);
+}
 
-  setTimeout(() => window.location.reload(), 1000);
+function getOrderStatus(order) {
+  return order.order_status || order.status || "Pending";
+}
+
+async function validateBackendSession() {
+  try {
+    const response = await apiCall("/auth/me");
+    return response && (response.data || response.user_id);
+  } catch (err) {
+    console.error("Session validation error:", err);
+    return false;
+  }
 }
 
 function getStatusBadgeClass(status) {

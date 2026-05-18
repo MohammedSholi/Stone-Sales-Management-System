@@ -9,7 +9,16 @@ let currentTab = "all";
 let orders = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
-  if (!UserSession.isLoggedIn()) {
+  const role = (UserSession.getRole() || "").toLowerCase();
+  if (!UserSession.isLoggedIn() || role !== "customer") {
+    window.location.href = "/auth/login.html";
+    return;
+  }
+
+  // Validate backend session is still active
+  const sessionValid = await validateBackendSession();
+  if (!sessionValid) {
+    UserSession.logout();
     window.location.href = "/auth/login.html";
     return;
   }
@@ -100,4 +109,15 @@ function getStatusBadgeClass(status) {
     Canceled: "canceled",
   };
   return classes[status] || "primary";
+}
+
+async function validateBackendSession() {
+  try {
+    const response = await apiCall("/auth/me");
+    // Session is valid if we get any successful response with user data
+    return response && (response.data || response.user_id);
+  } catch (err) {
+    console.error("Session validation error:", err);
+    return false;
+  }
 }

@@ -1,0 +1,142 @@
+/* Catalog.css Responsive and Animation Enhancements */
+
+/* Section visibility reveal animations */
+.section-visible {
+  animation: section-fade-in 0.65s var(--ease-out-expo) both;
+}
+
+@keyframes section-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Catalog card stagger effect on reveal */
+.catalog-card {
+  animation: card-reveal 0.55s var(--ease-out-expo) both;
+}
+
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Media query fixes for responsive layout */
+@media (max-width: 1024px) {
+  .stone-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stone-gallery {
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-controls {
+    flex-direction: column;
+    gap: 0.85rem;
+    align-items: stretch;
+  }
+
+  .catalog-sort {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .catalog-sort .form-select {
+    width: 100%;
+  }
+
+  .catalog-hero-actions {
+    flex-direction: column;
+  }
+
+  .stone-details-grid {
+    gap: 1.5rem;
+  }
+
+  .stone-hero {
+    min-height: 380px;
+  }
+
+  .stone-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stone-actions {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .btn-accent {
+    flex: 1;
+    min-width: auto;
+  }
+
+  .hero-stat {
+    padding: 1.2rem 1rem;
+  }
+
+  .hero-stat span {
+    font-size: 0.95rem;
+  }
+
+  .hero-stat p {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .catalog-hero-stats {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .catalog-hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.2rem);
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .catalog-card {
+    min-height: 380px;
+  }
+
+  .catalog-card__media {
+    height: 280px;
+  }
+
+  .stone-headline h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .stone-price-large {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .quantity-picker {
+    flex: 1;
+  }
+
+  .btn-accent {
+    flex: 1;
+  }
+}
